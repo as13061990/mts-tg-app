@@ -11,7 +11,7 @@ class Game extends Phaser.Scene {
   public player: Player;
   public actions: GameActions = new GameActions(this);
   public bg: Background;
-  public platforms: Phaser.Physics.Arcade.Group;
+  public pipes: Phaser.Physics.Arcade.Group;
   public coins: Phaser.Physics.Arcade.Group;
   public gameOver: boolean;
 
@@ -23,9 +23,9 @@ class Game extends Phaser.Scene {
   public create(): void {
     this.bg = new Background(this);
     this.player = new Player(this);
-    this.platforms = this.physics.add.group();
+    this.pipes = this.physics.add.group();
     this.coins = this.physics.add.group();
-    this.actions.startPlatforms();
+    this.actions.startPipes();
     this.actions.createClickZone();
     this.actions.setCollosions();
     this.actions.interval();

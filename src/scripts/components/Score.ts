@@ -1,7 +1,7 @@
 class Score extends Phaser.GameObjects.Text {
   constructor(scene: Phaser.Scene, x: number, y: number, score: string) {
     super(scene, x, y, score, {
-      font: '40px stolzl_medium',
+      font: '40px Triomphe',
       color: '#FFFFFF'
     });
     this.init();

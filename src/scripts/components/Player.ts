@@ -15,15 +15,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   private init(): void {
     this.jumpCounter = 0;
     this.cursors = this.scene.input.keyboard.createCursorKeys();
-    this.scene.anims.create({
-      key: 'jump',
-      frames: [ { key: 'player', frame: 1 } ]
-    });
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.setGravityY(800);
     this.setDepth(3);
-    this.body.setSize(80);
   }
 
   public jump(): void {
@@ -42,9 +37,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     if (this.cursors.space.isDown) {
       this.jump();
     }
-    this.anims.play('jump', true);
 
-    if (this.y > this.scene.cameras.main.height + this.height / 2) {
+    if ((this.y > this.scene.cameras.main.height + this.height / 2) || this.getBounds().bottom < 0) {
       this.scene.actions.gameOver();
     }
   }
