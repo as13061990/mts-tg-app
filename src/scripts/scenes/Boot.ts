@@ -6,6 +6,8 @@ declare global {
   interface Window {
     Telegram: {
       WebApp: {
+        viewportHeight: number;
+        viewportStableHeight: number;
         ready: () => void;
         expand: () => void;
         initDataUnsafe: {
@@ -61,6 +63,10 @@ class Boot extends Phaser.Scene {
     const telegram = window.Telegram.WebApp;
     telegram.ready();
     telegram.expand();
+    console.clear();
+    console.log(telegram.viewportHeight, telegram.viewportStableHeight);
+    console.log(telegram);
+    
     
     try { User.setID(telegram.initDataUnsafe.user.id); }
     catch (e) { User.setID('0'); }
