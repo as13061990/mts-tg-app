@@ -60,11 +60,8 @@ class Boot extends Phaser.Scene {
 
   private async checkUser(): Promise<void> {
     const telegram = window.Telegram.WebApp;
-    telegram.ready();
-    telegram.expand();
-    console.clear();
-    console.log(telegram.viewportHeight, telegram.viewportStableHeight);
-    console.log(telegram);
+    console.log(document.body.clientWidth);
+    console.log(document.body.clientHeight);
     
     
     try { User.setID(telegram.initDataUnsafe.user.id); }
