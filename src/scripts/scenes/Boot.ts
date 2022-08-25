@@ -51,7 +51,6 @@ class Boot extends Phaser.Scene {
 
   public update(): void {
     if (this.userReady && this.fontsReady) {
-      console.clear();
       console.log('build', this.build);
       this.userReady = false;
       this.fontsReady = false;
