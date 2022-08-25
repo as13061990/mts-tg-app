@@ -1,6 +1,22 @@
 @font-face {
-  font-family: Triomphe;
-  src: url('../fonts/Triomphe.ttf');
+  font-family: MTS-Black;
+  src: url('../fonts/MTSSans-Black.otf');
+}
+@font-face {
+  font-family: MTS-Bold;
+  src: url('../fonts/MTSSans-Bold.otf');
+}
+@font-face {
+  font-family: MTS-Medium;
+  src: url('../fonts/MTSSans-Medium.otf');
+}
+@font-face {
+  font-family: MTS-Regular;
+  src: url('../fonts/MTSSans-Regular.otf');
+}
+@font-face {
+  font-family: MTS-UltraWide;
+  src: url('../fonts/MTSSans-UltraWide.otf');
 }
 * {
   font-family: Bip;
@@ -24,6 +40,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #FFFFFF;
 }
 canvas {
   width: 100%;

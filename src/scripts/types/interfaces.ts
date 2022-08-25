@@ -3,7 +3,5 @@ interface Iposition {
   y: number;
 }
 interface Iscreen {
-  hide: () => void;
-  show: () => void;
   type: number;
 }

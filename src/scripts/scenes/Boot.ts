@@ -1,6 +1,9 @@
-import * as Webfont from '../libs/Webfonts.js';
+import * as Webfont from 'webfontloader';
 import User from '../data/User';
-import loading from '../../assets/images/loading.png';
+import loadingBg from '../../assets/images/loading-bg.jpg';
+import loadingDog from '../../assets/images/loading-dog.png';
+import mtsBank from '../../assets/images/mts-bank.png';
+import loadingProgress from '../../assets/images/loading-progress.png';
 
 declare global {
   interface Window {
@@ -36,7 +39,7 @@ class Boot extends Phaser.Scene {
   public init(): void {
     Webfont.load({
       custom: {
-        families: ['Triomphe']
+        families: ['MTS-Black', 'MTS-Bold', 'MTS-Medium', 'MTS-Regular', 'MTS-UltraWide']
       },
       active: (): void => {
         this.fontsReady = true;
@@ -46,7 +49,10 @@ class Boot extends Phaser.Scene {
   }
 
   public preload(): void {
-    this.load.image('loading', loading);
+    this.load.image('loading-bg', loadingBg);
+    this.load.image('loading-dog', loadingDog);
+    this.load.image('mts-bank', mtsBank);
+    this.load.image('loading-progress', loadingProgress);
   }
 
   public update(): void {
@@ -60,10 +66,7 @@ class Boot extends Phaser.Scene {
 
   private async checkUser(): Promise<void> {
     const telegram = window.Telegram.WebApp;
-    console.log(document.body.clientWidth);
-    console.log(document.body.clientHeight);
-    
-    
+
     try { User.setID(telegram.initDataUnsafe.user.id); }
     catch (e) { User.setID('0'); }
     

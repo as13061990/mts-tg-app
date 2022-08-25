@@ -5,55 +5,59 @@ import Settings from '../data/Settings';
 
 class Rules implements Iscreen {
   constructor(scene: Menu) {
-    this.scene = scene;
-    this.init();
+    this._scene = scene;
+    this._build();
   }
 
   public readonly type: screen = screen.RULES;
-  private scene: Menu;
-  private logo: Phaser.GameObjects.Sprite;
-  private text: Phaser.GameObjects.Text;
-  private runFinsih: Phaser.GameObjects.Text;
-  private thousand: Phaser.GameObjects.Text;
-  private bonusRuble: Phaser.GameObjects.Text;
-  private fromUralsib: Phaser.GameObjects.Text;
-  private goodluck: Phaser.GameObjects.Text;
-  private start: Button;
+  private _scene: Menu;
 
-  private init(): void {
-    const { centerX, centerY } = this.scene.cameras.main;
-
-    this.scene.add.text(centerX, centerY - 100, Settings.lang.rules, {
-      font: '27px Triomphe',
-      color: '#000000',
-      align: 'center',
-      wordWrap: { width: 600 }
-    }).setOrigin(0.5, 0);
-
-    this.start = new Button(this.scene, centerX, this.scene.cameras.main.height - 140, 'start-btn');
-    this.start.callback = (): void => this.scene.actions.clickStartBtn();
+  private _build(): void {
+    this._buildHeader();
+    this._buildRules();
+    this._buildButton();
   }
 
-  public show(): void {
-    this.logo.setVisible(true);
-    this.text.setVisible(true);
-    this.runFinsih.setVisible(true);
-    this.thousand.setVisible(true);
-    this.bonusRuble.setVisible(true);
-    this.fromUralsib.setVisible(true);
-    this.goodluck.setVisible(true);
-    this.start.setVisible(true);
+  private _buildHeader(): void {
+    const { height } = this._scene.cameras.main;
+    this._scene.add.text(55, height / 6, Settings.lang.gameRules, {
+      font: '56px MTS-UltraWide',
+      color: '#171717',
+      wordWrap: { width: 630 }
+    }).setOrigin(0, 1);
   }
 
-  public hide(): void {
-    this.logo.setVisible(false);
-    this.text.setVisible(false);
-    this.runFinsih.setVisible(false);
-    this.thousand.setVisible(false);
-    this.bonusRuble.setVisible(false);
-    this.fromUralsib.setVisible(false);
-    this.goodluck.setVisible(false);
-    this.start.setVisible(false);
+  private _buildRules(): void {
+    const { centerX, centerY } = this._scene.cameras.main;
+    const bg = this._scene.add.sprite(centerX, centerY, 'rules-bg');
+    const bounds = bg.getBounds();
+    this._scene.add.text(bounds.left + 40, bounds.top + 45, Settings.lang.makeHappyDog, {
+      font: '40px MTS-Bold',
+      color: '#FF0000'
+    }).setLineSpacing(8);
+
+    const descr1 = this._scene.add.text(bounds.left + 40, bounds.top + 170, Settings.lang.rulesDescr1, {
+      font: '20px MTS-Regular',
+      color: '#000000'
+    }).setLineSpacing(2);
+    this._scene.add.text(bounds.left + 127, descr1.getBounds().bottom, Settings.lang.rulesDescr2, {
+      font: '20px MTS-Bold',
+      color: '#000000'
+    }).setOrigin(0, 1);
+    this._scene.add.text(bounds.left + 40, descr1.getBounds().bottom + 30, Settings.lang.rulesDescr3, {
+      font: '20px MTS-Regular',
+      color: '#000000'
+    }).setLineSpacing(2);
+  }
+
+  private _buildButton(): void {
+    const { centerX, height } = this._scene.cameras.main;
+    const start = new Button(this._scene, centerX, height - 100, 'red-button');
+    start.text = this._scene.add.text(start.x, start.y, Settings.lang.play, {
+      font: '34px MTS-UltraWide',
+      color: '#FFFFFF'
+    }).setOrigin(0.5, 0.5);
+    start.callback = (): void => this._scene.actions.clickStartBtn();
   }
 }
 

@@ -4,9 +4,8 @@ import { screen } from '../types/enums';
 class Settings {
 
   public readonly sizes = {
-    minWidth: 720,
-    maxWidth: 1000,
-    minHeight: 1200,
+    width: 720,
+    minHeight: 911,
     maxHeight: 1620
   }
   public readonly lang: { [key: string]: string } = langs.ru;
