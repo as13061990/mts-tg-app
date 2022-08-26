@@ -26,7 +26,7 @@ class GameActions {
     const { width, height } = this._scene.cameras.main;
     const x = 0;
     const y = 0;
-    this._scene.physics.world.setBounds(x, y, width, height - 200);
+    this._scene.physics.world.setBounds(x, y, width, height - 240);
   }
 
   public gameOver(): void {

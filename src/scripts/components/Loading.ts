@@ -5,6 +5,7 @@ import greyButton from '../../assets/images/grey-button.png';
 import blackButton from '../../assets/images/black-button.png';
 import bg from '../../assets/images/bg.jpg';
 import player from '../../assets/images/player.png';
+import jump from '../../assets/images/jump.png';
 import pixel from '../../assets/images/pixel.png';
 import rulesBg from '../../assets/images/rules-bg.png';
 import smile1 from '../../assets/images/smile-1.png';
@@ -62,7 +63,8 @@ class Loading {
     this._scene.load.image('black-button', blackButton);
     this._scene.load.image('bg', bg);
     this._scene.load.image('pixel', pixel);
-    this._scene.load.spritesheet('player', player, { frameWidth: 305, frameHeight: 161 });
+    this._scene.load.spritesheet('player', player, { frameWidth: 305, frameHeight: 243 });
+    this._scene.load.spritesheet('jump', jump, { frameWidth: 305, frameHeight: 243 });
     this._scene.load.image('rules-bg', rulesBg);
     this._scene.load.image('smile-1', smile1);
     this._scene.load.image('smile-2', smile2);
