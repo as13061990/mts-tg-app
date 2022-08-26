@@ -57,7 +57,7 @@ class Rules implements Iscreen {
       font: '34px MTS-UltraWide',
       color: '#FFFFFF'
     }).setOrigin(0.5, 0.5);
-    start.callback = (): void => this._scene.actions.clickStartBtn();
+    start.callback = (): void => this._scene.actions.startGame();
   }
 }
 

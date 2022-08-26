@@ -1,14 +1,9 @@
 enum screen {
-  RULES = 1,
-  RESULT = 2
-}
-
-enum coin {
-  BLUE = 1,
-  RED = 2
+  RULES,
+  RESULT,
+  RATING
 }
 
 export {
-  screen,
-  coin
+  screen
 }

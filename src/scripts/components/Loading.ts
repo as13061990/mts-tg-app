@@ -1,24 +1,20 @@
 import Settings from '../data/Settings';
 import Menu from '../scenes/Menu';
 import redButton from '../../assets/images/red-button.png';
+import greyButton from '../../assets/images/grey-button.png';
+import blackButton from '../../assets/images/black-button.png';
 import bg from '../../assets/images/bg.jpg';
 import player from '../../assets/images/player.png';
 import pixel from '../../assets/images/pixel.png';
 import pipe from '../../assets/images/pipe.png';
 import pipeTile from '../../assets/images/pipe-tile.png';
-import blue1 from '../../assets/images/blue-1.png';
-import blue2 from '../../assets/images/blue-2.png';
-import blue3 from '../../assets/images/blue-3.png';
-import blue4 from '../../assets/images/blue-4.png';
-import red1 from '../../assets/images/red-1.png';
-import red2 from '../../assets/images/red-2.png';
-import red3 from '../../assets/images/red-3.png';
-import red4 from '../../assets/images/red-4.png';
-import red5 from '../../assets/images/red-5.png';
-import ice from '../../assets/images/ice.png';
-import flame from '../../assets/images/flame.png';
-import againBtn from '../../assets/images/again-btn.png';
 import rulesBg from '../../assets/images/rules-bg.png';
+import smile1 from '../../assets/images/smile-1.png';
+import smile2 from '../../assets/images/smile-2.png';
+import smile3 from '../../assets/images/smile-3.png';
+import smile4 from '../../assets/images/smile-4.png';
+import resultBg from '../../assets/images/result-bg.png';
+import resultLogo from '../../assets/images/result-logo.png';
 
 class Loading {
   constructor(scene: Menu) {
@@ -64,24 +60,20 @@ class Loading {
 
   private _loadAssets(): void {
     this._scene.load.image('red-button', redButton);
+    this._scene.load.image('grey-button', greyButton);
+    this._scene.load.image('black-button', blackButton);
     this._scene.load.image('bg', bg);
     this._scene.load.image('pixel', pixel);
     this._scene.load.image('pipe', pipe);
     this._scene.load.image('pipe-tile', pipeTile);
     this._scene.load.image('player', player);
-    this._scene.load.image('blue-1', blue1);
-    this._scene.load.image('blue-2', blue2);
-    this._scene.load.image('blue-3', blue3);
-    this._scene.load.image('blue-4', blue4);
-    this._scene.load.image('red-1', red1);
-    this._scene.load.image('red-2', red2);
-    this._scene.load.image('red-3', red3);
-    this._scene.load.image('red-4', red4);
-    this._scene.load.image('red-5', red5);
-    this._scene.load.image('ice', ice);
-    this._scene.load.image('flame', flame);
-    this._scene.load.image('again-btn', againBtn);
     this._scene.load.image('rules-bg', rulesBg);
+    this._scene.load.image('smile-1', smile1);
+    this._scene.load.image('smile-2', smile2);
+    this._scene.load.image('smile-3', smile3);
+    this._scene.load.image('smile-4', smile4);
+    this._scene.load.image('result-bg', resultBg);
+    this._scene.load.image('result-logo', resultLogo);
   }
 }
 

@@ -1,4 +1,5 @@
 import Menu from '../scenes/Menu';
+import User from '../data/User';
 
 class MenuActions {
   constructor(scene: Menu) {
@@ -7,7 +8,8 @@ class MenuActions {
 
   private _scene: Menu;
 
-  public clickStartBtn(): void {
+  public startGame(): void {
+    User.resetScore();
     this._scene.scene.start('Game');
   }
 }
