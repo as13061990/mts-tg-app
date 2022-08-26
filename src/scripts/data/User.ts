@@ -31,7 +31,7 @@ class User {
   }
 
   public plusScore(score: number): number {
-    this._score = score;
+    this._score += score;
     if (this._score > this._record) this._record = this._score; 
     return this._score;
   }

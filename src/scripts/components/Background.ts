@@ -1,7 +1,7 @@
 import Settings from '../data/Settings';
 
-const WIDTH = 3567;
-const SPEED = 60000;
+const WIDTH = 2004;
+const SPEED = 40000;
 
 class Background extends Phaser.GameObjects.TileSprite {
   constructor(scene: Phaser.Scene) {

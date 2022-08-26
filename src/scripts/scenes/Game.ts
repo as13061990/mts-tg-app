@@ -22,6 +22,7 @@ class Game extends Phaser.Scene {
     this.bg = new Background(this);
     this.player = new Player(this);
     this.actions.createClickZone();
+    this.actions.setWorldBounds();
     this.actions.interval();
   }
 }

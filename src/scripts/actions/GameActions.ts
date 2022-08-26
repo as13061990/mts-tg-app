@@ -22,11 +22,18 @@ class GameActions {
     }
   }
 
+  public setWorldBounds(): void {
+    const { width, height } = this._scene.cameras.main;
+    const x = 0;
+    const y = 0;
+    this._scene.physics.world.setBounds(x, y, width, height - 200);
+  }
+
   public gameOver(): void {
     this._scene.bg.tween.stop();
     this._scene.gameOver = true;
  
-    this._scene.time.addEvent({ delay: 4000, callback: (): void => {
+    this._scene.time.addEvent({ delay: 2000, callback: (): void => {
       Settings.setScreen(screen.RESULT);
       this._scene.scene.start('Menu');
     }, loop: false });
