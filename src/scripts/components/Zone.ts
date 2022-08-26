@@ -22,6 +22,7 @@ class Zone extends Phaser.GameObjects.Zone {
   private pointer: Phaser.Input.Pointer = this.scene.input.activePointer;
   public clickCallback: Function = (): void => {};
   public downCallback: Function = (): void => {};
+  public upCallback: Function = (): void => {};
   public downClickCallback: Function = (): void => {};
 
   public build(): void {
@@ -80,6 +81,8 @@ class Zone extends Phaser.GameObjects.Zone {
   protected preUpdate(): void {
     if (this.pointer.isDown || this.scene.input.pointer1.isDown) {
       this.downCallback();
+    } else {
+      this.upCallback();
     }
   }
 

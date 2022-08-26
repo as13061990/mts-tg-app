@@ -11,7 +11,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   public scene: Game;
   private _cursors: Phaser.Types.Input.Keyboard.CursorKeys;
-  public jumpCounter: number;
+  private _jumpCounter: number;
 
   private _build(): void {
     this.scene.anims.create({
@@ -38,7 +38,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       frameRate: 10,
       repeat: -1
     });
-    this.jumpCounter = 0;
+    this._jumpCounter = 0;
     this._cursors = this.scene.input.keyboard.createCursorKeys();
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
@@ -50,8 +50,14 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   public jump(): void {
     if (this.scene.gameOver) return;
-    if (this.jumpCounter === 0) return;
-    this.setVelocityY(-300);
+    if (this._jumpCounter === 0 && this.body.velocity.y === 0) this._jumpCounter = 1;
+    if (this._jumpCounter > 0 && this._jumpCounter < MAX_JUMP) {
+      this.setVelocityY(-500);
+    }
+  }
+
+  public resetJump(): void {
+    this._jumpCounter = 0;
   }
 
   protected preUpdate(time: number, delta: number): void {
@@ -67,12 +73,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       this.anims.play('run', true);
     }
     
-    if (this.jumpCounter > 0) {
-      this.jumpCounter = this.jumpCounter > MAX_JUMP ? 0 : this.jumpCounter += delta;
-    }
-
-    if (this._cursors.space.isDown) {
-      this.jump();
+    if (this._jumpCounter > 0) {
+      this._jumpCounter = this._jumpCounter > MAX_JUMP ? 0 : this._jumpCounter += delta;
     }
   }
 }

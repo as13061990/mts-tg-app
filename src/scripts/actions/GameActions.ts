@@ -17,9 +17,7 @@ class GameActions {
     const { centerX, centerY, width, height } = this._scene.cameras.main;
     const zone = new Zone(this._scene, centerX, centerY, width, height);
     zone.downCallback = (): void => this._scene.player.jump();
-    zone.downClickCallback = (): void => {
-      this._scene.player.jumpCounter = 1;
-    }
+    zone.upCallback = (): void => this._scene.player.resetJump();
   }
 
   public setWorldBounds(): void {
