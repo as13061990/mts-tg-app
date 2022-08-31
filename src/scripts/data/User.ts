@@ -5,6 +5,7 @@ class User {
   private _username: string = 'no_username';
   private _score: number = 0;
   private _record: number = 0;
+  private _health: number = 0;
 
   public setID(id: string): string {
     this._id = id;
@@ -42,6 +43,20 @@ class User {
 
   public getRecord(): number {
     return this._record;
+  }
+
+  public resetHealth(): number {
+    this._health = 3;
+    return this._health;
+  }
+
+  public minusHealht(): number {
+    if (this._health > 0) this._health--;
+    return this._health;
+  }
+
+  public getHealth(): number {
+    return this._health;
   }
 }
 

@@ -4,6 +4,8 @@ import loadingBg from '../../assets/images/loading-bg.jpg';
 import loadingDog from '../../assets/images/loading-dog.png';
 import mtsBank from '../../assets/images/mts-bank.png';
 import loadingProgress from '../../assets/images/loading-progress.png';
+import Sounds from '../actions/Sounds';
+import Settings from '../data/Settings';
 
 declare global {
   interface Window {
@@ -32,9 +34,9 @@ class Boot extends Phaser.Scene {
     super('Boot');
   }
 
-  public build: string = 'v1.0.0';
-  private fontsReady: boolean = false;
-  private userReady: boolean = false;
+  public _build: string = 'v1.0.0';
+  private _fonts: boolean = false;
+  private _user: boolean = false;
 
   public init(): void {
     Webfont.load({
@@ -42,10 +44,11 @@ class Boot extends Phaser.Scene {
         families: ['MTS-Black', 'MTS-Bold', 'MTS-Medium', 'MTS-Regular', 'MTS-UltraWide']
       },
       active: (): void => {
-        this.fontsReady = true;
+        this._fonts = true;
       }
     });
     this.checkUser();
+    Settings.sounds = new Sounds(this);
   }
 
   public preload(): void {
@@ -56,10 +59,10 @@ class Boot extends Phaser.Scene {
   }
 
   public update(): void {
-    if (this.userReady && this.fontsReady) {
-      console.log('build', this.build);
-      this.userReady = false;
-      this.fontsReady = false;
+    if (this._user && this._fonts) {
+      console.log('build', this._build);
+      this._user = false;
+      this._fonts = false;
       this.scene.launch('Menu');
     }
   }
@@ -78,7 +81,7 @@ class Boot extends Phaser.Scene {
     try { User.setUsername(telegram.initDataUnsafe.user.username); }
     catch (e) { User.setUsername('no_username'); }
 
-    this.userReady = true;
+    this._user = true;
   }
 }
 

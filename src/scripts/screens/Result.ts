@@ -1,6 +1,7 @@
 import Button from '../components/Button';
 import Settings from '../data/Settings';
 import User from '../data/User';
+import Utils from '../data/Utils';
 import Menu from '../scenes/Menu';
 import { screen } from '../types/enums';
 
@@ -21,7 +22,7 @@ class Result implements Iscreen {
   private _builInfo(): void {
     const { centerX, height } = this._scene.cameras.main;
     const score = User.getScore();
-    const index = score >= 800 ? 4 : score < 800 && score >= 300 ? 3 : score < 300 && score >= 100 ? 2 : 1;
+    const index = Utils.getScoreIndex();
 
     const bg = this._scene.add.sprite(centerX, height / 12, 'result-bg').setOrigin(0.5, 0);
     const bounds = bg.getBounds();

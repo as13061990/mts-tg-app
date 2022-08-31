@@ -1,3 +1,4 @@
+import Settings from '../data/Settings';
 import Game from '../scenes/Game';
 
 const MAX_JUMP = 500;
@@ -12,6 +13,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   public scene: Game;
   private _cursors: Phaser.Types.Input.Keyboard.CursorKeys;
   private _jumpCounter: number;
+  private _recovery: boolean = false;
 
   private _build(): void {
     this.scene.anims.create({
@@ -49,8 +51,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   public jump(): void {
-    if (this.scene.gameOver) return;
-    if (this._jumpCounter === 0 && this.body.velocity.y === 0) this._jumpCounter = 1;
+    if (!this.scene) return;
+    if (this.scene?.gameOver) return;
+    if (this._jumpCounter === 0 && this.body.velocity.y === 0) {
+      this._jumpCounter = 1;
+      Settings.sounds.play('jump');
+    }
     if (this._jumpCounter > 0 && this._jumpCounter < MAX_JUMP) {
       this.setVelocityY(-500);
     }
@@ -58,6 +64,27 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   public resetJump(): void {
     this._jumpCounter = 0;
+  }
+
+  public setDamage(): void {
+    if (this._recovery) return;
+    this._recovery = true;
+
+    let counter = 0;
+    const time = this.scene.time.addEvent({ delay: 80, callback: (): void => {
+      this.alpha === 1 ? this?.setAlpha(0.1) : this?.setAlpha(1);
+
+      if (counter >= 20) {
+        this._recovery = false;
+        time?.remove();
+        this?.setAlpha(1);
+      }
+      counter++;
+    }, loop: true });
+  }
+
+  public getRecovery(): boolean {
+    return this._recovery;
   }
 
   protected preUpdate(time: number, delta: number): void {

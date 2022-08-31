@@ -1,0 +1,60 @@
+import Settings from '../data/Settings';
+import Game from '../scenes/Game';
+
+class Bonus extends Phaser.Physics.Arcade.Sprite {
+  constructor(scene: Game) {
+    super(scene, scene.cameras.main.width, scene.cameras.main.height - 250, 'bonus-' + Phaser.Math.Between(1, 4));
+    this._build();
+  }
+
+  public scene: Game;
+  private _tween: Phaser.Tweens.Tween;
+  private _tween2: Phaser.Tweens.Tween;
+  private _tween3: Phaser.Tweens.Tween;
+  private _flash: Phaser.GameObjects.Sprite;
+
+  private _build(): void {
+    this.scene.add.existing(this);
+    this.scene.physics.add.existing(this);
+    this.setOrigin(0, 1);
+    this.setDepth(3);
+    const { centerX, centerY } = this.getBounds();
+    this._flash = this.scene.add.sprite(centerX, centerY, 'flash');
+
+    this._tween = this.scene.tweens.add({
+      targets: [this, this._flash],
+      x: '-=' + this.scene.bg.width,
+      duration: Settings.speed
+    });
+    this._tween2 = this.scene.tweens.add({
+      targets: this,
+      y: '-=20',
+      yoyo: true,
+      repeat: -1
+    });
+    this._tween3 = this.scene.tweens.add({
+      targets: this._flash,
+      alpha: { from: 0.8, to: 0.2 },
+      yoyo: true,
+      repeat: -1
+    });
+    this.scene.tween.push(this._tween);
+    this.scene.tween.push(this._tween2);
+    this.scene.tween.push(this._tween3);
+  }
+
+  public destroy(): void {
+    this._flash.destroy();
+    super.destroy();
+  }
+
+  protected preUpdate(): void {
+    if (this.x + this.width < 0) {
+      this._tween.stop();
+      this._tween2.stop();
+      this.destroy();
+    }
+  }
+}
+
+export default Bonus;

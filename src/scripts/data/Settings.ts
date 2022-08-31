@@ -10,9 +10,8 @@ class Settings {
   }
   public readonly lang: { [key: string]: string } = langs.ru;
   public screen: screen = screen.RULES;
-  public readonly speed: number = 1350
-  public readonly duration: number = 3500;
-  public readonly maxScore: number = 1000;
+  public readonly speed: number = 5000;
+  public sounds: Isounds;
 
   public setScreen(screen: screen): screen {
     this.screen = screen;

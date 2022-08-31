@@ -30,6 +30,7 @@ class Menu extends Phaser.Scene {
     } else if (Settings.screen === screen.RESULT) {
       this.screen = new Result(this);
     }
+    Settings.sounds.playMusic('menu');
   }
 }
 
