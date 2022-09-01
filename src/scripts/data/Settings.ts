@@ -9,7 +9,7 @@ class Settings {
     maxHeight: 1620
   }
   public readonly lang: { [key: string]: string } = langs.ru;
-  public screen: screen = screen.RULES;
+  public screen: screen = screen.RESULT;
   public readonly speed: number = 5000;
   public sounds: Isounds;
 

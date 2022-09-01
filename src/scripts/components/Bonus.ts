@@ -2,8 +2,8 @@ import Settings from '../data/Settings';
 import Game from '../scenes/Game';
 
 class Bonus extends Phaser.Physics.Arcade.Sprite {
-  constructor(scene: Game) {
-    super(scene, scene.cameras.main.width, scene.cameras.main.height - 250, 'bonus-' + Phaser.Math.Between(1, 4));
+  constructor(scene: Game, y: number) {
+    super(scene, scene.cameras.main.width, y, 'bonus-' + Phaser.Math.Between(1, 4));
     this._build();
   }
 

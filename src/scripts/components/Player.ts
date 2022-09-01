@@ -11,7 +11,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   public scene: Game;
-  private _cursors: Phaser.Types.Input.Keyboard.CursorKeys;
   private _jumpCounter: number;
   private _recovery: boolean = false;
 
@@ -41,7 +40,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       repeat: -1
     });
     this._jumpCounter = 0;
-    this._cursors = this.scene.input.keyboard.createCursorKeys();
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.setCollideWorldBounds(true);
@@ -52,6 +50,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   public jump(): void {
     if (!this.scene) return;
+    if (this.scene.mts) return;
     if (this.scene?.gameOver) return;
     if (this._jumpCounter === 0 && this.body.velocity.y === 0) {
       this._jumpCounter = 1;

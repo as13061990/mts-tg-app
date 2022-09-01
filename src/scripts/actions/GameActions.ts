@@ -128,31 +128,32 @@ class GameActions {
     this._damage();
   }
 
-  public createObjects(bonus?: boolean): void {
+  private _createObjects(bonus?: boolean): void {
     this._scene.time.addEvent({ delay: Phaser.Math.Between(3000, 6000), callback: (): void => {
-      if (bonus || this._scene.mts) {
-        this._createBonus();
+      if (bonus) {
+        this.createBonus();
       } else {
         this._createObstacle();
       }
     }, loop: false });
   }
 
-  private _createBonus(): void {
+  public createBonus(): void {
     if (this._scene.mts) {
       const bonus = new Premium(this._scene);
       this._scene.bonuses.add(bonus);
     } else {
-      const bonus = new Bonus(this._scene);
+      const y = Phaser.Math.Between(this._scene.cameras.main.height - 600, this._scene.cameras.main.height - 250);
+      const bonus = new Bonus(this._scene, y);
       this._scene.bonuses.add(bonus);
     }
-    this.createObjects();
+    this._createObjects();
   }
 
   private _createObstacle(): void {
     const obstacle = new Obstacle(this._scene);
     this._scene.obstacles.add(obstacle);
-    this.createObjects(true);
+    this._createObjects(true);
   }
 }
 

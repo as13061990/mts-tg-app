@@ -3,7 +3,7 @@ class User {
   private _id: string = '0';
   private _name: string = 'Неизвестный игрок';
   private _username: string = 'no_username';
-  private _score: number = 0;
+  private _score: number = 910;
   private _record: number = 0;
   private _health: number = 0;
 

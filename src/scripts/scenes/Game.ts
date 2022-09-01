@@ -40,8 +40,10 @@ class Game extends Phaser.Scene {
     this.actions.interval();
     this.actions.setRunning();
     this.actions.startMusic();
-    this.actions.setCollisions();
-    this.actions.createObjects(true);
+    this.actions.setCollisions(); 
+    this.time.addEvent({ delay: 1300, callback: (): void => {
+      this.actions.createBonus();
+    }, loop: false });
     this._test();
   }
 

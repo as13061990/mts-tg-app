@@ -16,7 +16,7 @@ class Score extends Phaser.GameObjects.Text {
       targets: this,
       y: '-=100',
       alpha: 0,
-      duration: 2000,
+      duration: 1500,
       onComplete: (): void => this.destroy()
     });
   }

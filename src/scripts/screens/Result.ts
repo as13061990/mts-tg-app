@@ -36,21 +36,18 @@ class Result implements Iscreen {
       color: '#FF0000'
     }).setOrigin(0, 0.5);
 
-    const headerY = index === 4 ? smile.y + 70 : smile.y + 85;
-    const header = this._scene.add.text(bounds.left + 40, headerY, Settings.lang['resultHeader' + index].toUpperCase(), {
-      font: '45px MTS-UltraWide',
+    const header = this._scene.add.text(bounds.left + 40, smile.y + 70, Settings.lang['resultHeader' + index].toUpperCase(), {
+      font: '40px MTS-UltraWide',
       color: '#000000'
     }).setLineSpacing(1);
     
-    const font = index === 4 ? '25px ' : '26px ';
-    const descrY = index === 4 ? header.getBounds().bottom + 15 : header.getBounds().bottom + 30;
-    const descr = this._scene.add.text(bounds.left + 40, descrY, Settings.lang['resultDescrBold' + index], {
-      font: font + 'MTS-Medium',
+    const descr = this._scene.add.text(bounds.left + 40, header.getBounds().bottom + 15, Settings.lang['resultDescrBold' + index], {
+      font: '25px MTS-Medium',
       color: '#000000'
     }).setLineSpacing(5);
 
     this._scene.add.text(bounds.left + 40, descr.getBounds().bottom + 20, Settings.lang['resultDescr' + index], {
-      font: font + 'MTS-Regular',
+      font: '25px MTS-Regular',
       color: '#000000',
       wordWrap: { width: 550 }
     }).setLineSpacing(5);
@@ -64,7 +61,7 @@ class Result implements Iscreen {
       color: '#FFFFFF'
     }).setOrigin(0.5, 0.5);
     start.callback = (): void => {
-      const link = 'https://www.mtsbank.ru/factory/l/karti/mir-lite-cashback/lukoil/';
+      const link = 'https://www.mtsbank.ru/factory/l/credit-lukoil/?utm_source=mrk_game&utm_medium=tg_sp&utm_campaign=is0_mts_premium_nozh_q3_nontv_2022&utm_term=button';
       const a = document.createElement('a');
       a.setAttribute('target', '_blank');
       document.body.appendChild(a);
