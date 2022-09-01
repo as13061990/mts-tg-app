@@ -31,12 +31,12 @@ class Rules implements Iscreen {
     const { centerX, centerY } = this._scene.cameras.main;
     const bg = this._scene.add.sprite(centerX, centerY, 'rules-bg');
     const bounds = bg.getBounds();
-    this._scene.add.text(bounds.left + 40, bounds.top + 45, Settings.lang.makeHappyDog, {
+    this._scene.add.text(bounds.left + 40, bounds.top + 30, Settings.lang.makeHappyDog, {
       font: '40px MTS-Bold',
       color: '#FF0000'
-    }).setLineSpacing(8);
+    }).setLineSpacing(4);
 
-    const descr1 = this._scene.add.text(bounds.left + 40, bounds.top + 170, Settings.lang.rulesDescr1, {
+    const descr1 = this._scene.add.text(bounds.left + 40, bounds.top + 140, Settings.lang.rulesDescr1, {
       font: '20px MTS-Regular',
       color: '#000000'
     }).setLineSpacing(2);
@@ -44,7 +44,11 @@ class Rules implements Iscreen {
       font: '20px MTS-Bold',
       color: '#000000'
     }).setOrigin(0, 1);
-    this._scene.add.text(bounds.left + 40, descr1.getBounds().bottom + 30, Settings.lang.rulesDescr3, {
+    const descr4 = this._scene.add.text(bounds.left + 40, descr1.getBounds().bottom + 20, Settings.lang.rulesDescr4, {
+      font: '20px MTS-Regular',
+      color: '#000000'
+    });
+    this._scene.add.text(bounds.left + 40, descr4.getBounds().bottom + 20, Settings.lang.rulesDescr3, {
       font: '20px MTS-Regular',
       color: '#000000'
     }).setLineSpacing(2);
