@@ -34,9 +34,9 @@ class Rules implements Iscreen {
     this._scene.add.text(bounds.left + 40, bounds.top + 30, Settings.lang.makeHappyDog, {
       font: '40px MTS-Bold',
       color: '#FF0000'
-    }).setLineSpacing(4);
+    }).setLineSpacing(2);
 
-    const descr1 = this._scene.add.text(bounds.left + 40, bounds.top + 140, Settings.lang.rulesDescr1, {
+    const descr1 = this._scene.add.text(bounds.left + 40, bounds.top + 130, Settings.lang.rulesDescr1, {
       font: '20px MTS-Regular',
       color: '#000000'
     }).setLineSpacing(2);
@@ -48,7 +48,7 @@ class Rules implements Iscreen {
       font: '20px MTS-Regular',
       color: '#000000'
     });
-    this._scene.add.text(bounds.left + 40, descr4.getBounds().bottom + 20, Settings.lang.rulesDescr3, {
+    this._scene.add.text(bounds.left + 40, descr4.getBounds().bottom + 15, Settings.lang.rulesDescr3, {
       font: '20px MTS-Regular',
       color: '#000000'
     }).setLineSpacing(2);
