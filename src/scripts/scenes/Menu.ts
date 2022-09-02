@@ -25,9 +25,9 @@ class Menu extends Phaser.Scene {
     const { centerX, centerY } = this.cameras.main;
     this.add.sprite(centerX, centerY, 'loading-bg');
 
-    if (Settings.screen === screen.RULES) {
+    if (Settings.getScreen() === screen.RULES) {
       this.screen = new Rules(this);
-    } else if (Settings.screen === screen.RESULT) {
+    } else if (Settings.getScreen() === screen.RESULT) {
       this.screen = new Result(this);
     }
     Settings.sounds.playMusic('menu');

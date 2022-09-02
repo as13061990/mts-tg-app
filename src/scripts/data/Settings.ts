@@ -9,17 +9,31 @@ class Settings {
     maxHeight: 1620
   }
   public readonly lang: { [key: string]: string } = langs.ru;
-  public screen: screen = screen.RULES;
+  private _screen: screen = screen.RULES;
+  private _mobile: boolean = false;
   public readonly speed: number = 4000;
   public sounds: Isounds;
 
   public setScreen(screen: screen): screen {
-    this.screen = screen;
-    return this.screen;
+    this._screen = screen;
+    return this._screen;
+  }
+
+  public getScreen(): screen {
+    return this._screen;
   }
 
   public getSpeed(): number {
     return this.speed;
+  }
+
+  public isMobile(): boolean {
+    return this._mobile;
+  }
+
+  public setMobile(mobile: boolean): boolean {
+    this._mobile = mobile;
+    return this._mobile;
   }
 }
 

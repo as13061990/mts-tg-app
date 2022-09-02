@@ -27,6 +27,10 @@ window.onload = (): void => {
  
     const x = canvasWidth / gcd(canvasHeight, canvasWidth);
     const y = canvasHeight / gcd(canvasHeight, canvasWidth);
+
+    if (canvasHeight >= 1280) {
+      Settings.setMobile(true);
+    }
   
     if (clientHeight / y > clientWidth / x) {
       width = clientWidth;
@@ -35,6 +39,7 @@ window.onload = (): void => {
       width = clientHeight / y * x;
       height = clientHeight;
     }
+    
     root.style.height = height + 'px';
     root.style.width = width + 'px';
     const config: Phaser.Types.Core.GameConfig = {

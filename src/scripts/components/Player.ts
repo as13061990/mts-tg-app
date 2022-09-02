@@ -6,7 +6,7 @@ const JUMP_TRANSITION = 90;
 
 class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene: Game) {
-    super(scene, scene.cameras.main.centerX - 200, scene.cameras.main.centerY - 100, 'player');
+    super(scene, scene.cameras.main.centerX - 200, scene.cameras.main.height - 400, 'player');
     this._build();
   }
 

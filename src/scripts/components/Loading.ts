@@ -1,19 +1,25 @@
 import Settings from '../data/Settings';
 import Menu from '../scenes/Menu';
-import redButton from '../../assets/images/red-button.png';
-import greyButton from '../../assets/images/grey-button.png';
-import blackButton from '../../assets/images/black-button.png';
+import redButtonDesktop from '../../assets/images/desktop/red-button.png';
+import redButtonMobile from '../../assets/images/mobile/red-button.png';
+import greyButtonDesktop from '../../assets/images/desktop/grey-button.png';
+import greyButtonMobile from '../../assets/images/mobile/grey-button.png';
+import blackButtonDesktop from '../../assets/images/desktop/black-button.png';
+import blackButtonMobile from '../../assets/images/mobile/black-button.png';
 import bg from '../../assets/images/bg.jpg';
 import player from '../../assets/images/player.png';
 import jumpPlayer from '../../assets/images/jump.png';
 import pixel from '../../assets/images/pixel.png';
-import rulesBg from '../../assets/images/rules-bg.png';
+import rulesBgDesktop from '../../assets/images/desktop/rules-bg.png';
+import rulesBgMobile from '../../assets/images/mobile/rules-bg.png';
 import smile1 from '../../assets/images/smile-1.png';
 import smile2 from '../../assets/images/smile-2.png';
 import smile3 from '../../assets/images/smile-3.png';
 import smile4 from '../../assets/images/smile-4.png';
-import resultBg from '../../assets/images/result-bg.png';
-import resultLogo from '../../assets/images/result-logo.png';
+import resultBgDesktop from '../../assets/images/desktop/result-bg.png';
+import resultBgMobile from '../../assets/images/mobile/result-bg.png';
+import resultLogoDesktop from '../../assets/images/desktop/result-logo.png';
+import resultLogoMobile from '../../assets/images/mobile/result-logo.png';
 import npc1 from '../../assets/images/npc-1.png';
 import npc2 from '../../assets/images/npc-2.png';
 import npc3 from '../../assets/images/npc-3.png';
@@ -41,6 +47,11 @@ import obstacle1 from '../../assets/images/obstacle-1.png';
 import obstacle2 from '../../assets/images/obstacle-2.png';
 import obstacle3 from '../../assets/images/obstacle-3.png';
 import obstacle4 from '../../assets/images/obstacle-4.png';
+import mobileSmile1 from '../../assets/images/mobile/mobile-smile-1.png';
+import mobileSmile2 from '../../assets/images/mobile/mobile-smile-2.png';
+import mobileSmile3 from '../../assets/images/mobile/mobile-smile-3.png';
+import mobileSmile4 from '../../assets/images/mobile/mobile-smile-4.png';
+
 
 class Loading {
   constructor(scene: Menu) {
@@ -53,13 +64,19 @@ class Loading {
   private _build(): void {
     const { centerX, centerY, height } = this._scene.cameras.main;
     const bg = this._scene.add.sprite(centerX, centerY, 'loading-bg');
+
     const dog = this._scene.add.sprite(0, height, 'loading-dog').setOrigin(0, 1);
-    const mts = this._scene.add.sprite(centerX + 265, centerY, 'mts-bank');
-    const logo = this._scene.add.text(centerX, height / 4.5, Settings.lang.happyCashback, {
-      font: '80px MTS-UltraWide',
+    
+    const mtsY = Settings.isMobile() ? centerY - 80 : centerY + 30;
+    const mts = this._scene.add.sprite(centerX + 265, mtsY, 'mts-bank');
+
+    const logoY = Settings.isMobile() ? 45 : 40;
+    const logo = this._scene.add.text(60, logoY, Settings.lang.happyCashback, {
+      font: '82px MTS-UltraWide',
       color: '#171717',
       wordWrap: { width: 650 }
-    }).setOrigin(0.5, 1);
+    }).setOrigin(0, 0);
+
     const progress = this._scene.add.sprite(centerX, height - 100, 'loading-progress');
     const text = this._scene.add.text(progress.x, progress.y + 2, '0%', {
       font: '52px MTS-UltraWide',
@@ -85,6 +102,12 @@ class Loading {
   }
 
   private _loadAssets(): void {
+    const redButton = Settings.isMobile() ? redButtonMobile : redButtonDesktop;
+    const rulesBg = Settings.isMobile() ? rulesBgMobile : rulesBgDesktop;
+    const greyButton = Settings.isMobile() ? greyButtonMobile : greyButtonDesktop;
+    const blackButton = Settings.isMobile() ? blackButtonMobile : blackButtonDesktop;
+    const resultLogo = Settings.isMobile() ? resultLogoMobile : resultLogoDesktop;
+    const resultBg = Settings.isMobile() ? resultBgMobile : resultBgDesktop;
     this._scene.load.image('red-button', redButton);
     this._scene.load.image('grey-button', greyButton);
     this._scene.load.image('black-button', blackButton);
@@ -126,6 +149,13 @@ class Loading {
     this._scene.load.image('obstacle-2', obstacle2);
     this._scene.load.image('obstacle-3', obstacle3);
     this._scene.load.image('obstacle-4', obstacle4);
+
+    if (Settings.isMobile()) {
+      this._scene.load.image('mobile-smile-1', mobileSmile1);
+      this._scene.load.image('mobile-smile-2', mobileSmile2);
+      this._scene.load.image('mobile-smile-3', mobileSmile3);
+      this._scene.load.image('mobile-smile-4', mobileSmile4);
+    }
   }
 }
 

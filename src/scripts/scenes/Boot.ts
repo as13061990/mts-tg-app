@@ -1,8 +1,10 @@
 import * as Webfont from 'webfontloader';
 import User from '../data/User';
 import loadingBg from '../../assets/images/loading-bg.jpg';
-import loadingDog from '../../assets/images/loading-dog.png';
-import mtsBank from '../../assets/images/mts-bank.png';
+import loadingDogDesktop from '../../assets/images/desktop/loading-dog.png';
+import loadingDogMobile from '../../assets/images/mobile/loading-dog.png';
+import mtsBankDesktop from '../../assets/images/desktop/mts-bank.png';
+import mtsBankMobile from '../../assets/images/mobile/mts-bank.png';
 import loadingProgress from '../../assets/images/loading-progress.png';
 import Sounds from '../actions/Sounds';
 import Settings from '../data/Settings';
@@ -52,6 +54,8 @@ class Boot extends Phaser.Scene {
   }
 
   public preload(): void {
+    const loadingDog = Settings.isMobile() ? loadingDogMobile : loadingDogDesktop;
+    const mtsBank = Settings.isMobile() ? mtsBankMobile : mtsBankDesktop;
     this.load.image('loading-bg', loadingBg);
     this.load.image('loading-dog', loadingDog);
     this.load.image('mts-bank', mtsBank);

@@ -1,4 +1,5 @@
-import User from "../data/User";
+import Settings from '../data/Settings';
+import User from '../data/User';
 
 class Health {
   constructor(scene: Phaser.Scene) {
@@ -10,9 +11,11 @@ class Health {
   private _sprites: Phaser.GameObjects.Sprite[] = [];
 
   private _build(): void {
+    const y = Settings.isMobile() ? 85 : 50;
+
     for (let i = 0; i < 3; i++) {
       const x = 70 + i * 55;
-      const sprite = this._scene.add.sprite(x, 50, 'health').setOrigin(0, 0);
+      const sprite = this._scene.add.sprite(x, y, 'health').setOrigin(0, 0);
       this._sprites.push(sprite);
     }
   }

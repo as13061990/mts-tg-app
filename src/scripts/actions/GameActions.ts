@@ -141,8 +141,7 @@ class GameActions {
       const bonus = new Premium(this._scene);
       this._scene.bonuses.add(bonus);
     } else {
-      // const y = Phaser.Math.Between(this._scene.cameras.main.height - 600, this._scene.cameras.main.height - 350);
-      const y = this._scene.cameras.main.height - 400
+      const y = Phaser.Math.Between(this._scene.cameras.main.height - 600, this._scene.cameras.main.height - 400);
       const bonus = new Bonus(this._scene, y);
       this._scene.bonuses.add(bonus);
     }
