@@ -31,7 +31,7 @@ class Result implements Iscreen {
     const centerY = (height - 275) / 2;
 
     const bg = this._scene.add.sprite(centerX, centerY, 'result-bg');
-    const bgHeight = index === 1 ? 780 : index === 2 ? 815 : index === 3 ? 800 : bg.height;
+    const bgHeight = index === 1 ? 790 : index === 2 ? 825 : index === 3 ? 810 : bg.height;
     bg.setDisplaySize(bg.width, bgHeight);
     const bounds = bg.getBounds();
 

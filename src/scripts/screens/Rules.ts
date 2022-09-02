@@ -45,13 +45,13 @@ class Rules implements Iscreen {
     const { centerX, centerY } = this._scene.cameras.main;
     const bg = this._scene.add.sprite(centerX, centerY + 35, 'rules-bg');
     const bounds = bg.getBounds();
-    const header = this._scene.add.text(bounds.left + 35, bounds.top + 40, Settings.lang.makeHappyDog, {
+    const header = this._scene.add.text(bounds.left + 35, bounds.top + 34, Settings.lang.makeHappyDog, {
       font: '40px MTS-Bold',
       color: '#FF0000'
     }).setLineSpacing(2);
 
     const textDescr1 = 'Для этого прыгай через преграды\nи собирай суперкешбэк 5% на самые\nпопулярные категории по карте';
-    const descr1 = this._scene.add.text(bounds.left + 35, header.getBounds().bottom + 35, textDescr1, {
+    const descr1 = this._scene.add.text(bounds.left + 35, header.getBounds().bottom + 32, textDescr1, {
       font: '27px MTS-Regular',
       color: '#000000'
     }).setLineSpacing(2);
@@ -59,13 +59,13 @@ class Rules implements Iscreen {
       font: '27px MTS-Bold',
       color: '#000000'
     }).setLineSpacing(2);
-    const descr3 = this._scene.add.text(bounds.left + 35, descr2.getBounds().bottom + 40, Settings.lang.rulesDescr3, {
+    const descr3 = this._scene.add.text(bounds.left + 35, descr2.getBounds().bottom + 37, Settings.lang.rulesDescr3, {
       font: '27px MTS-Bold',
       color: '#FF0000'
     }).setLineSpacing(2);
     
     const textDescr4 = 'Собирай бонусы и избегай препятствий\nс помощью прыжка, для этого нажимай\nна любую часть экрана, чем дольше\nнажатие – тем выше прыжок.\n\nУ тебя будет 3 жизни – они будут сгорать\nпри столкновении с препятствиями.\nКак только сгорит последняя –\nигра закончится.';
-    this._scene.add.text(bounds.left + 35, descr3.getBounds().bottom + 40, textDescr4, {
+    this._scene.add.text(bounds.left + 35, descr3.getBounds().bottom + 37, textDescr4, {
       font: '27px MTS-Regular',
       color: '#000000'
     }).setLineSpacing(2);
