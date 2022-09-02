@@ -27,9 +27,7 @@ class GameActions {
 
   public setWorldBounds(): void {
     const { width, height } = this._scene.cameras.main;
-    const x = 0;
-    const y = 0;
-    this._scene.physics.world.setBounds(x, y, width, height - 240);
+    this._scene.physics.world.setBounds(0, 0, width, height - 280);
   }
 
   public gameOver(): void {
@@ -69,7 +67,7 @@ class GameActions {
     const { width, height } = this._scene.cameras.main;
     const x = width + Phaser.Math.Between(0, 500);
     const y = height - 320;
-    new NPC(this._scene, x, y, 'npc-' + Phaser.Math.Between(1, 4));
+    new NPC(this._scene, x, y, 'npc-' + Phaser.Math.Between(1, 7));
   }
 
   private _damage(): void {
@@ -143,7 +141,8 @@ class GameActions {
       const bonus = new Premium(this._scene);
       this._scene.bonuses.add(bonus);
     } else {
-      const y = Phaser.Math.Between(this._scene.cameras.main.height - 600, this._scene.cameras.main.height - 250);
+      // const y = Phaser.Math.Between(this._scene.cameras.main.height - 600, this._scene.cameras.main.height - 350);
+      const y = this._scene.cameras.main.height - 400
       const bonus = new Bonus(this._scene, y);
       this._scene.bonuses.add(bonus);
     }

@@ -34,7 +34,7 @@ class Bonus extends Phaser.Physics.Arcade.Sprite {
     });
     this._tween3 = this.scene.tweens.add({
       targets: this._flash,
-      alpha: { from: 0.8, to: 0.2 },
+      alpha: { from: 1, to: 0.8 },
       yoyo: true,
       repeat: -1
     });

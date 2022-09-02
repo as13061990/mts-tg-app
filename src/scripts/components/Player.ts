@@ -17,7 +17,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   private _build(): void {
     this.scene.anims.create({
       key: 'run',
-      frames: this.scene.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
+      frames: this.scene.anims.generateFrameNumbers('player', { start: 0, end: 6 }),
       frameRate: 10,
       repeat: -1
     });
@@ -45,7 +45,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
     this.setGravityY(800);
     this.setDepth(3);
-    this.body.setSize(220, 200);
+    this.body.setSize(220, 100);
   }
 
   public jump(): void {

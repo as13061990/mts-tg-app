@@ -10,7 +10,7 @@ class Settings {
   }
   public readonly lang: { [key: string]: string } = langs.ru;
   public screen: screen = screen.RULES;
-  public readonly speed: number = 5000;
+  public readonly speed: number = 4000;
   public sounds: Isounds;
 
   public setScreen(screen: screen): screen {
