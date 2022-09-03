@@ -1,11 +1,13 @@
 import * as Webfont from 'webfontloader';
 import User from '../data/User';
-import loadingBg from '../../assets/images/loading-bg.jpg';
+import loadingBgWhite from '../../assets/images/loading-bg-white.jpg';
+import loadingBgBlack from '../../assets/images/loading-bg-black.jpg';
 import loadingDogDesktop from '../../assets/images/desktop/loading-dog.png';
 import loadingDogMobile from '../../assets/images/mobile/loading-dog.png';
 import mtsBankDesktop from '../../assets/images/desktop/mts-bank.png';
 import mtsBankMobile from '../../assets/images/mobile/mts-bank.png';
-import loadingProgress from '../../assets/images/loading-progress.png';
+import loadingProgressWhite from '../../assets/images/loading-progress-white.png';
+import loadingProgressBlack from '../../assets/images/loading-progress-black.png';
 import Sounds from '../actions/Sounds';
 import Settings from '../data/Settings';
 
@@ -17,7 +19,15 @@ declare global {
         viewportStableHeight: number;
         ready: () => void;
         expand: () => void;
-        themeParams: any,
+        themeParams: {
+          bg_color: string;
+          text_color: string;
+          hint_color: string;
+          link_color: string;
+          button_color: string;
+          button_text_color: string;
+          secondary_bg_color: string;
+        },
         initDataUnsafe: {
           user: {
             id: string;
@@ -57,6 +67,8 @@ class Boot extends Phaser.Scene {
   public preload(): void {
     const loadingDog = Settings.isMobile() ? loadingDogMobile : loadingDogDesktop;
     const mtsBank = Settings.isMobile() ? mtsBankMobile : mtsBankDesktop;
+    const loadingBg = Settings.isBlack() ? loadingBgBlack : loadingBgWhite;
+    const loadingProgress = Settings.isBlack() ? loadingProgressBlack : loadingProgressWhite;
     this.load.image('loading-bg', loadingBg);
     this.load.image('loading-dog', loadingDog);
     this.load.image('mts-bank', mtsBank);
@@ -76,9 +88,8 @@ class Boot extends Phaser.Scene {
     const telegram = window.Telegram.WebApp;
     telegram.ready();
     telegram.expand();
-
-    console.log(telegram.themeParams);
-    
+    this._checkTheme(telegram.themeParams.bg_color || '#FFFFFF');
+    // this._checkTheme(telegram.themeParams.bg_color || '#17212b');
 
     try { User.setID(telegram.initDataUnsafe.user.id); }
     catch (e) { User.setID('0'); }
@@ -90,6 +101,16 @@ class Boot extends Phaser.Scene {
     catch (e) { User.setUsername('no_username'); }
 
     this._user = true;
+  }
+
+  private _checkTheme(bg: string): void {
+    const color = bg.substring(1);
+    const rgb = parseInt(color, 16);
+    const r = (rgb >> 16) & 0xFF;
+    const g = (rgb >> 8) & 0xFF;
+    const b = (rgb >> 0) & 0xFF;
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    if (luma < 40) Settings.setBlack(true);
   }
 }
 

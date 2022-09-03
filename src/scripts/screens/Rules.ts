@@ -25,18 +25,20 @@ class Rules implements Iscreen {
   }
 
   private _buildMobileHeader(): void {
+    const textColor = Settings.isBlack() ? '#FFFFFF' : '#171717';
     this._scene.add.text(55, 50, Settings.lang.gameRules, {
       font: '80px MTS-UltraWide',
-      color: '#171717',
+      color: textColor,
       wordWrap: { width: 630 }
     }).setLineSpacing(6);
   }
 
   private _buildDesktopHeader(): void {
+    const textColor = Settings.isBlack() ? '#FFFFFF' : '#171717';
     const { height } = this._scene.cameras.main;
     this._scene.add.text(55, height / 6, Settings.lang.gameRules, {
       font: '56px MTS-UltraWide',
-      color: '#171717',
+      color: textColor,
       wordWrap: { width: 630 }
     }).setOrigin(0, 1);
   }
@@ -49,15 +51,16 @@ class Rules implements Iscreen {
       font: '40px MTS-Bold',
       color: '#FF0000'
     }).setLineSpacing(2);
+    const textColor = Settings.isBlack() ? '#FFFFFF' : '#000000';
 
     const textDescr1 = 'Для этого прыгай через преграды\nи собирай суперкешбэк 5% на самые\nпопулярные категории по карте';
     const descr1 = this._scene.add.text(bounds.left + 35, header.getBounds().bottom + 32, textDescr1, {
       font: '27px MTS-Regular',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(2);
     const descr2 = this._scene.add.text(bounds.left + 35, descr1.getBounds().bottom + 7, Settings.lang.rulesDescr2, {
       font: '27px MTS-Bold',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(2);
     const descr3 = this._scene.add.text(bounds.left + 35, descr2.getBounds().bottom + 35, Settings.lang.rulesDescr3, {
       font: '27px MTS-Bold',
@@ -67,7 +70,7 @@ class Rules implements Iscreen {
     const textDescr4 = 'Собирай бонусы и избегай препятствий\nс помощью прыжка, для этого нажимай\nна любую часть экрана, чем дольше\nнажатие – тем выше прыжок.\n\nУ тебя будет 3 жизни – они будут сгорать\nпри столкновении с препятствиями.\nКак только сгорит последняя –\nигра закончится.';
     this._scene.add.text(bounds.left + 35, descr3.getBounds().bottom + 35, textDescr4, {
       font: '27px MTS-Regular',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(2);
   }
 
@@ -79,15 +82,16 @@ class Rules implements Iscreen {
       font: '40px MTS-Bold',
       color: '#FF0000'
     }).setLineSpacing(2);
+    const textColor = Settings.isBlack() ? '#FFFFFF' : '#000000';
 
     const textDescr1 = 'Для этого прыгай через преграды и собирай\nсуперкешбэк 5% на самые популярные категории\nпо карте';
     const descr1 = this._scene.add.text(bounds.left + 40, bounds.top + 130, textDescr1, {
       font: '20px MTS-Regular',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(2);
     this._scene.add.text(bounds.left + 127, descr1.getBounds().bottom, Settings.lang.rulesDescr2, {
       font: '20px MTS-Bold',
-      color: '#000000'
+      color: textColor
     }).setOrigin(0, 1);
     const descr3 = this._scene.add.text(bounds.left + 40, descr1.getBounds().bottom + 20, Settings.lang.rulesDescr3, {
       font: '20px MTS-Bold',
@@ -97,7 +101,7 @@ class Rules implements Iscreen {
     const textDescr4 = 'Собирай бонусы и избегай препятствий с помощью\nпрыжка, для этого нажимай на любую часть экрана,\nчем дольше нажатие – тем выше прыжок.\n\nУ тебя будет 3 жизни – они будут сгорать\nпри столкновении с препятствиями.\nКак только сгорит последняя – игра закончится.';
     this._scene.add.text(bounds.left + 40, descr3.getBounds().bottom + 15, textDescr4, {
       font: '20px MTS-Regular',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(2);
   }
 

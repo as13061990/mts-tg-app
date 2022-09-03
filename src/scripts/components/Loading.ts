@@ -10,14 +10,18 @@ import bg from '../../assets/images/bg.jpg';
 import player from '../../assets/images/player.png';
 import jumpPlayer from '../../assets/images/jump.png';
 import pixel from '../../assets/images/pixel.png';
-import rulesBgDesktop from '../../assets/images/desktop/rules-bg.png';
-import rulesBgMobile from '../../assets/images/mobile/rules-bg.png';
+import rulesBgDesktopWhite from '../../assets/images/desktop/rules-bg-white.png';
+import rulesBgDesktopBlack from '../../assets/images/desktop/rules-bg-black.png';
+import rulesBgMobileWhite from '../../assets/images/mobile/rules-bg-white.png';
+import rulesBgMobileBlack from '../../assets/images/mobile/rules-bg-black.png';
 import smile1 from '../../assets/images/smile-1.png';
 import smile2 from '../../assets/images/smile-2.png';
 import smile3 from '../../assets/images/smile-3.png';
 import smile4 from '../../assets/images/smile-4.png';
-import resultBgDesktop from '../../assets/images/desktop/result-bg.png';
-import resultBgMobile from '../../assets/images/mobile/result-bg.png';
+import resultBgDesktopWhite from '../../assets/images/desktop/result-bg-white.png';
+import resultBgDesktopBlack from '../../assets/images/desktop/result-bg-black.png';
+import resultBgMobileWhite from '../../assets/images/mobile/result-bg-white.png';
+import resultBgMobileBlack from '../../assets/images/mobile/result-bg-black.png';
 import resultLogoDesktop from '../../assets/images/desktop/result-logo.png';
 import resultLogoMobile from '../../assets/images/mobile/result-logo.png';
 import npc1 from '../../assets/images/npc-1.png';
@@ -71,9 +75,10 @@ class Loading {
     const mts = this._scene.add.sprite(centerX + 265, mtsY, 'mts-bank');
 
     const logoY = Settings.isMobile() ? 45 : 40;
+    const textColor = Settings.isBlack() ? '#FFFFFF' : '#171717';
     const logo = this._scene.add.text(60, logoY, Settings.lang.happyCashback, {
       font: '82px MTS-UltraWide',
-      color: '#171717',
+      color: textColor,
       wordWrap: { width: 650 }
     }).setOrigin(0, 0);
 
@@ -103,11 +108,11 @@ class Loading {
 
   private _loadAssets(): void {
     const redButton = Settings.isMobile() ? redButtonMobile : redButtonDesktop;
-    const rulesBg = Settings.isMobile() ? rulesBgMobile : rulesBgDesktop;
+    const rulesBg = Settings.isMobile() && Settings.isBlack() ? rulesBgMobileBlack : Settings.isMobile() && !Settings.isBlack() ? rulesBgMobileWhite : !Settings.isMobile() && Settings.isBlack() ? rulesBgDesktopBlack : rulesBgDesktopWhite;
     const greyButton = Settings.isMobile() ? greyButtonMobile : greyButtonDesktop;
     const blackButton = Settings.isMobile() ? blackButtonMobile : blackButtonDesktop;
     const resultLogo = Settings.isMobile() ? resultLogoMobile : resultLogoDesktop;
-    const resultBg = Settings.isMobile() ? resultBgMobile : resultBgDesktop;
+    const resultBg = Settings.isMobile() && Settings.isBlack() ? resultBgMobileBlack : Settings.isMobile() && !Settings.isBlack() ? resultBgMobileWhite : !Settings.isMobile() && Settings.isBlack() ? resultBgDesktopBlack : resultBgDesktopWhite;
     this._scene.load.image('red-button', redButton);
     this._scene.load.image('grey-button', greyButton);
     this._scene.load.image('black-button', blackButton);

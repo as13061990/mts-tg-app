@@ -29,6 +29,7 @@ class Result implements Iscreen {
     const score = User.getScore();
     const index = Utils.getScoreIndex();
     const centerY = (height - 275) / 2;
+    const textColor = Settings.isBlack() ? '#FFFFFF' : '#000000';
 
     const bg = this._scene.add.sprite(centerX, centerY, 'result-bg');
     const bgHeight = index === 1 ? 790 : index === 2 ? 825 : index === 3 ? 810 : bg.height;
@@ -44,17 +45,17 @@ class Result implements Iscreen {
 
     const header = this._scene.add.text(bounds.left + 40, smile.getBounds().bottom + 36, Settings.lang['resultHeaderMobile' + index].toUpperCase(), {
       font: '60px MTS-UltraWide',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(1);
 
     const descr = this._scene.add.text(bounds.left + 40, header.getBounds().bottom + 30, Settings.lang['resultDescrMobileBold' + index], {
       font: '33px MTS-Medium',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(5);
 
     this._scene.add.text(bounds.left + 40, descr.getBounds().bottom + 40, Settings.lang['resultDescrMobile' + index], {
       font: '26px MTS-Regular',
-      color: '#000000',
+      color: textColor,
       wordWrap: { width: 550 }
     }).setLineSpacing(5);
   }
@@ -63,6 +64,7 @@ class Result implements Iscreen {
     const { centerX, height } = this._scene.cameras.main;
     const score = User.getScore();
     const index = Utils.getScoreIndex();
+    const textColor = Settings.isBlack() ? '#FFFFFF' : '#000000';
 
     const bg = this._scene.add.sprite(centerX, height / 12, 'result-bg').setOrigin(0.5, 0);
     const bounds = bg.getBounds();
@@ -78,17 +80,17 @@ class Result implements Iscreen {
 
     const header = this._scene.add.text(bounds.left + 40, smile.y + 70, Settings.lang['resultHeader' + index].toUpperCase(), {
       font: '40px MTS-UltraWide',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(1);
     
     const descr = this._scene.add.text(bounds.left + 40, header.getBounds().bottom + 15, Settings.lang['resultDescrBold' + index], {
       font: '25px MTS-Medium',
-      color: '#000000'
+      color: textColor
     }).setLineSpacing(5);
 
     this._scene.add.text(bounds.left + 40, descr.getBounds().bottom + 20, Settings.lang['resultDescr' + index], {
       font: '25px MTS-Regular',
-      color: '#000000',
+      color: textColor,
       wordWrap: { width: 550 }
     }).setLineSpacing(5);
   }
