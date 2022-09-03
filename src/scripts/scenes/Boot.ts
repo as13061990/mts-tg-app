@@ -17,6 +17,7 @@ declare global {
         viewportStableHeight: number;
         ready: () => void;
         expand: () => void;
+        ThemeParams: any,
         initDataUnsafe: {
           user: {
             id: string;
@@ -75,6 +76,9 @@ class Boot extends Phaser.Scene {
     const telegram = window.Telegram.WebApp;
     telegram.ready();
     telegram.expand();
+
+    console.log(telegram.ThemeParams);
+    
 
     try { User.setID(telegram.initDataUnsafe.user.id); }
     catch (e) { User.setID('0'); }
