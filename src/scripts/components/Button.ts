@@ -14,16 +14,21 @@ class Button extends Phaser.GameObjects.Sprite {
 
   public x: number;
   public y: number;
-  private _press: boolean;
+  public press: boolean;
   public text: Phaser.GameObjects.Text;
   public icon: Phaser.GameObjects.Sprite;
   public callback: Function = (): void => {};
+  private _simple: boolean = false;
 
   private init(): void {
     this.scene.add.existing(this);
     this.pressButton();
   }
 
+  public setSimpleClick(): void {
+    this._simple = true;
+  }
+  
   public destroy(): this {
     super.destroy();
     this.text?.destroy();
@@ -41,7 +46,7 @@ class Button extends Phaser.GameObjects.Sprite {
   protected pressButton(): void {
     this.setInteractive();
     this.on('pointerdown', (): void => {
-      this._press = true;
+      this.press = true;
       let counter = 0;
       let filter = 0xFFFFFF;
 
@@ -50,9 +55,12 @@ class Button extends Phaser.GameObjects.Sprite {
         this.setTint(filter);
         this.text?.setTint(filter);
         this.icon?.setTint(filter);
-        this.y = Math.round(this.y + 1);
-        this.text?.setY(Math.round(this.text?.y + 1));
-        this.icon?.setY(Math.round(this.icon?.y + 1));
+
+        if (!this._simple) {
+          this.y = Math.round(this.y + 1);
+          this.text?.setY(Math.round(this.text?.y + 1));
+          this.icon?.setY(Math.round(this.icon?.y + 1));
+        }
         counter++;
   
         if (counter >= 3) {
@@ -62,8 +70,8 @@ class Button extends Phaser.GameObjects.Sprite {
     });
   
     this.on('pointerout', (): void => {
-      if (this._press) {
-        this._press = false;
+      if (this.press) {
+        this.press = false;
         let counter = 0;
         let filter = 0x999999;
 
@@ -72,9 +80,12 @@ class Button extends Phaser.GameObjects.Sprite {
           this.setTint(filter);
           this.text?.setTint(filter);
           this.icon?.setTint(filter);
-          this.y = Math.round(this.y - 1);
-          this.text?.setY(Math.round(this.text?.y - 1));
-          this.icon?.setY(Math.round(this.icon?.y - 1));
+
+          if (!this._simple) {
+            this.y = Math.round(this.y - 1);
+            this.text?.setY(Math.round(this.text?.y - 1));
+            this.icon?.setY(Math.round(this.icon?.y - 1));
+          }
           counter++;
   
           if (counter >= 3) {
@@ -85,8 +96,8 @@ class Button extends Phaser.GameObjects.Sprite {
     });
   
     this.on('pointerup', (): void => {
-      if (this._press) {
-        this._press = false;
+      if (this.press) {
+        this.press = false;
         let counter = 0;
         let filter = 0x999999;
         const interval = this.scene.time.addEvent({ delay: 10, callback: (): void => {
@@ -94,9 +105,12 @@ class Button extends Phaser.GameObjects.Sprite {
           this.setTint(filter);
           this.text?.setTint(filter);
           this.icon?.setTint(filter);
-          this.y = Math.round(this.y - 1);
-          this.text?.setY(Math.round(this.text?.y - 1));
-          this.icon?.setY(Math.round(this.icon?.y - 1));
+          
+          if (!this._simple) {
+            this.y = Math.round(this.y - 1);
+            this.text?.setY(Math.round(this.text?.y - 1));
+            this.icon?.setY(Math.round(this.icon?.y - 1));
+          }
           counter++;
   
           if (counter >= 3) {

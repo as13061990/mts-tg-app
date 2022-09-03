@@ -47,28 +47,28 @@ class Rules implements Iscreen {
     const { centerX, centerY } = this._scene.cameras.main;
     const bg = this._scene.add.sprite(centerX, centerY + 35, 'rules-bg');
     const bounds = bg.getBounds();
-    const header = this._scene.add.text(bounds.left + 35, bounds.top + 34, Settings.lang.makeHappyDog, {
+    const header = this._scene.add.text(bounds.left + 35, bounds.top + 30, Settings.lang.makeHappyDog, {
       font: '40px MTS-Bold',
       color: '#FF0000'
     }).setLineSpacing(2);
     const textColor = Settings.isBlack() ? '#FFFFFF' : '#000000';
 
     const textDescr1 = 'Для этого прыгай через преграды\nи собирай суперкешбэк 5% на самые\nпопулярные категории по карте';
-    const descr1 = this._scene.add.text(bounds.left + 35, header.getBounds().bottom + 32, textDescr1, {
+    const descr1 = this._scene.add.text(bounds.left + 35, header.getBounds().bottom + 30, textDescr1, {
       font: '27px MTS-Regular',
       color: textColor
     }).setLineSpacing(2);
-    const descr2 = this._scene.add.text(bounds.left + 35, descr1.getBounds().bottom + 7, Settings.lang.rulesDescr2, {
+    const descr2 = this._scene.add.text(bounds.left + 35, descr1.getBounds().bottom + 6, Settings.lang.rulesDescr2, {
       font: '27px MTS-Bold',
       color: textColor
     }).setLineSpacing(2);
-    const descr3 = this._scene.add.text(bounds.left + 35, descr2.getBounds().bottom + 35, Settings.lang.rulesDescr3, {
+    const descr3 = this._scene.add.text(bounds.left + 35, descr2.getBounds().bottom + 33, Settings.lang.rulesDescr3, {
       font: '27px MTS-Bold',
       color: '#FF0000'
     }).setLineSpacing(2);
     
     const textDescr4 = 'Собирай бонусы и избегай препятствий\nс помощью прыжка, для этого нажимай\nна любую часть экрана, чем дольше\nнажатие – тем выше прыжок.\n\nУ тебя будет 3 жизни – они будут сгорать\nпри столкновении с препятствиями.\nКак только сгорит последняя –\nигра закончится.';
-    this._scene.add.text(bounds.left + 35, descr3.getBounds().bottom + 35, textDescr4, {
+    this._scene.add.text(bounds.left + 35, descr3.getBounds().bottom + 33, textDescr4, {
       font: '27px MTS-Regular',
       color: textColor
     }).setLineSpacing(2);

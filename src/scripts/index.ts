@@ -4,6 +4,7 @@ import * as Phaser from 'phaser';
 import Boot from './scenes/Boot';
 import Game from './scenes/Game';
 import Menu from './scenes/Menu';
+import Pause from './scenes/Pause';
 import Settings from './data/Settings';
 
 const gcd = (num1: number, num2: number): number => {
@@ -52,7 +53,7 @@ window.onload = (): void => {
         // arcade: { debug: true }
       },
       render: { transparent: true },
-      scene: [ Boot, Game, Menu ]
+      scene: [ Boot, Game, Menu, Pause ]
     }
     new Phaser.Game(config);
   }, 100);

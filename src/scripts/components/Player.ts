@@ -50,6 +50,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   public jump(): void {
     if (!this.scene) return;
+    if (this.scene.pause.press) return;
     if (this.scene.mts) return;
     if (this.scene?.gameOver) return;
     if (this._jumpCounter === 0 && this.body.velocity.y === 0) {

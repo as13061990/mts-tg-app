@@ -4,6 +4,7 @@ import Player from '../components/Player';
 import User from '../data/User';
 import Points from '../components/Points';
 import Health from '../components/Health';
+import Pause from '../components/Pause';
 
 class Game extends Phaser.Scene {
   constructor() {
@@ -14,6 +15,7 @@ class Game extends Phaser.Scene {
   public player: Player;
   public points: Points;
   public health: Health;
+  public pause: Pause;
   public actions: GameActions = new GameActions(this);
   public bg: Background;
   public gameOver: boolean;
@@ -33,6 +35,7 @@ class Game extends Phaser.Scene {
     this.bg = new Background(this);
     this.player = new Player(this);
     this.points = new Points(this);
+    this.pause = new Pause(this);
     this.bonuses = this.physics.add.group();
     this.obstacles = this.physics.add.group();
     this.actions.createClickZone();

@@ -55,7 +55,8 @@ import mobileSmile1 from '../../assets/images/mobile/mobile-smile-1.png';
 import mobileSmile2 from '../../assets/images/mobile/mobile-smile-2.png';
 import mobileSmile3 from '../../assets/images/mobile/mobile-smile-3.png';
 import mobileSmile4 from '../../assets/images/mobile/mobile-smile-4.png';
-
+import resume from '../../assets/images/resume.png';
+import pause from '../../assets/images/pause.png';
 
 class Loading {
   constructor(scene: Menu) {
@@ -154,6 +155,8 @@ class Loading {
     this._scene.load.image('obstacle-2', obstacle2);
     this._scene.load.image('obstacle-3', obstacle3);
     this._scene.load.image('obstacle-4', obstacle4);
+    this._scene.load.image('resume', resume);
+    this._scene.load.image('pause', pause);
 
     if (Settings.isMobile()) {
       this._scene.load.image('mobile-smile-1', mobileSmile1);
