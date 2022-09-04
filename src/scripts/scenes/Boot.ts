@@ -10,6 +10,7 @@ import loadingProgressWhite from '../../assets/images/loading-progress-white.png
 import loadingProgressBlack from '../../assets/images/loading-progress-black.png';
 import Sounds from '../actions/Sounds';
 import Settings from '../data/Settings';
+import axios from 'axios';
 
 declare global {
   interface Window {
@@ -100,6 +101,14 @@ class Boot extends Phaser.Scene {
     try { User.setUsername(telegram.initDataUnsafe.user.username); }
     catch (e) { User.setUsername('no_username'); }
 
+    axios.post(process.env.API + '/getData', {
+      id: User.getID(),
+    }).then(res => {
+      if (!res.data.error) {
+        const record: number = res.data.data.record;
+        User.setRecord(record);
+      }
+    });
     this._user = true;
   }
 

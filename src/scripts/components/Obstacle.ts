@@ -3,7 +3,7 @@ import Game from '../scenes/Game';
 
 class Obstacle extends Phaser.Physics.Arcade.Sprite {
   constructor(scene: Game) {
-    super(scene, scene.cameras.main.width, scene.cameras.main.height - 230, 'obstacle-' + Phaser.Math.Between(1, 4));
+    super(scene, scene.cameras.main.width, scene.cameras.main.height - 215, 'obstacle-' + Phaser.Math.Between(1, 4));
     this._build();
   }
 

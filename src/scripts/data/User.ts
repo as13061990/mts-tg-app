@@ -6,9 +6,14 @@ class User {
   private _score: number = 0;
   private _record: number = 0;
   private _health: number = 0;
+  private _timer: number = 0;
 
   public setID(id: string): string {
     this._id = id;
+    return this._id;
+  }
+
+  public getID(): string {
     return this._id;
   }
 
@@ -33,11 +38,12 @@ class User {
 
   public plusScore(score: number): number {
     this._score += score;
-    if (this._score > this._record) this._record = this._score; 
+    if (this._score > this._record) this._record = this._score;
     return this._score;
   }
 
-  public setRecord(): number {
+  public setRecord(record: number): number {
+    this._record = record;
     return this._record;
   }
 
@@ -57,6 +63,20 @@ class User {
 
   public getHealth(): number {
     return this._health;
+  }
+  
+  public getTimer(): number {
+    return this._timer;
+  }
+
+  public resetTimer(): number {
+    this._timer = 0;
+    return this._timer;
+  }
+
+  public plusTimer(): number {
+    this._timer++;
+    return this._timer;
   }
 }
 

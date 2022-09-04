@@ -18,19 +18,31 @@ class GameActions {
 
   private _scene: Game;
 
-  public createClickZone(): void {
+  public start(): void {
+    this._createClickZone();
+    this._setWorldBounds();
+    this._interval();
+    this._setRunning();
+    this._startMusic();
+    this._setCollisions(); 
+    this._scene.time.addEvent({ delay: 1300, callback: (): void => {
+      this._createBonus();
+    }, loop: false });
+  }
+
+  private _createClickZone(): void {
     const { centerX, centerY, width, height } = this._scene.cameras.main;
     const zone = new Zone(this._scene, centerX, centerY, width, height);
     zone.downCallback = (): void => this._scene.player.jump();
     zone.upCallback = (): void => this._scene.player.resetJump();
   }
 
-  public setWorldBounds(): void {
+  private _setWorldBounds(): void {
     const { width, height } = this._scene.cameras.main;
-    this._scene.physics.world.setBounds(0, 0, width, height - 280);
+    this._scene.physics.world.setBounds(0, 0, width, height - 285);
   }
 
-  public gameOver(): void {
+  private _gameOver(): void {
     this._scene.tween.map(tween => tween.stop());
     this._scene.gameOver = true;
     Settings.sounds.stopMusic();
@@ -42,28 +54,29 @@ class GameActions {
     }, loop: false });
   }
 
-  public interval(): void {
+  private _interval(): void {
     this._scene.time.addEvent({ delay: 1000, callback: (): void => {
       if (!this._scene.gameOver && !this._scene.mts) {
         User.plusScore(1);
         this._scene.points.updatePoints();
       }
+      User.plusTimer();
     }, loop: true });
   }
 
-  public setRunning(): void {
+  private _setRunning(): void {
     const tween = this._scene.tweens.add({
       targets: this._scene.bg,
       tilePositionX: { from: 0, to: this._scene.bg.width },
       duration: Settings.speed,
       repeat: -1,
-      onStart: (): void => this.setNpc(),
-      onRepeat: (): void => this.setNpc()
+      onStart: (): void => this._setNpc(),
+      onRepeat: (): void => this._setNpc()
     });
     this._scene.tween.push(tween);
   }
 
-  private setNpc(): void {
+  private _setNpc(): void {
     const { width, height } = this._scene.cameras.main;
     const x = width + Phaser.Math.Between(0, 500);
     const y = height - 320;
@@ -80,18 +93,18 @@ class GameActions {
       this._scene.player.setDamage();
     } else {
       this._scene.player.destroy();
-      this.gameOver();
+      this._gameOver();
     }
   }
 
-  public startMusic(): void {
+  private _startMusic(): void {
     Settings.sounds.play('start');
     this._scene.time.addEvent({ delay: 2000, callback: (): void => {
       Settings.sounds.playMusic('game');
     }, loop: false });
   }
 
-  public setCollisions(): void {
+  private _setCollisions(): void {
     this._scene.physics.add.overlap(
       this._scene.player,
       this._scene.bonuses,
@@ -129,14 +142,14 @@ class GameActions {
   private _createObjects(bonus?: boolean): void {
     this._scene.time.addEvent({ delay: Phaser.Math.Between(3000, 6000), callback: (): void => {
       if (bonus) {
-        this.createBonus();
+        this._createBonus();
       } else {
         this._createObstacle();
       }
     }, loop: false });
   }
 
-  public createBonus(): void {
+  private _createBonus(): void {
     if (this._scene.mts) {
       const bonus = new Premium(this._scene);
       this._scene.bonuses.add(bonus);

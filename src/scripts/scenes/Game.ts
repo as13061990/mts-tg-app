@@ -29,6 +29,7 @@ class Game extends Phaser.Scene {
     this.mts = true;
     User.resetScore();
     User.resetHealth();
+    User.resetTimer();
   }
 
   public create(): void {
@@ -38,15 +39,7 @@ class Game extends Phaser.Scene {
     this.pause = new Pause(this);
     this.bonuses = this.physics.add.group();
     this.obstacles = this.physics.add.group();
-    this.actions.createClickZone();
-    this.actions.setWorldBounds();
-    this.actions.interval();
-    this.actions.setRunning();
-    this.actions.startMusic();
-    this.actions.setCollisions(); 
-    this.time.addEvent({ delay: 1300, callback: (): void => {
-      this.actions.createBonus();
-    }, loop: false });
+    this.actions.start();
     this._test();
   }
 
