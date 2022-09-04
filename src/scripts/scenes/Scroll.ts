@@ -35,7 +35,7 @@ class Scroll extends Phaser.Scene {
         color: '#FF0000'
       });
 
-      const color = String(user.id) === User.getID() ? '#FF0000' : textColor; 
+      const color = String(user.id) === String(User.getID()) ? '#FF0000' : textColor; 
       this.add.text(place.getBounds().right + 5, place.y, user.name, {
         font: '23px MTS-UltraWide',
         color: color
