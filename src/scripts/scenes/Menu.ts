@@ -4,6 +4,8 @@ import Rules from '../screens/Rules';
 import Result from '../screens/Result';
 import Loading from '../components/Loading';
 import { screen } from '../types/enums';
+import Rating from '../screens/Rating';
+import Scrolling from '../libs/Scrolling';
 
 class Menu extends Phaser.Scene {
   constructor() {
@@ -13,6 +15,11 @@ class Menu extends Phaser.Scene {
   public actions: MenuActions = new MenuActions(this);
   public screen: Iscreen;
   private _loading: boolean = false;
+  public scrolling: Scrolling;
+
+  public init(): void {
+    this.scrolling?.destroy();
+  }
 
   public preload(): void {
     if (this._loading === false) {
@@ -29,6 +36,8 @@ class Menu extends Phaser.Scene {
       this.screen = new Rules(this);
     } else if (Settings.getScreen() === screen.RESULT) {
       this.screen = new Result(this);
+    } else if (Settings.getScreen() === screen.RATING) {
+      this.screen = new Rating(this);
     }
     Settings.sounds.playMusic('menu');
   }

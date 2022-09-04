@@ -89,8 +89,8 @@ class Boot extends Phaser.Scene {
     const telegram = window.Telegram.WebApp;
     telegram.ready();
     telegram.expand();
-    this._checkTheme(telegram.themeParams.bg_color || '#FFFFFF');
-    // this._checkTheme(telegram.themeParams.bg_color || '#17212b');
+    // this._checkTheme(telegram.themeParams.bg_color || '#FFFFFF');
+    this._checkTheme(telegram.themeParams.bg_color || '#17212b');
 
     try { User.setID(telegram.initDataUnsafe.user.id); }
     catch (e) { User.setID('0'); }

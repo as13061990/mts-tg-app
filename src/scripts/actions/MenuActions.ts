@@ -12,6 +12,7 @@ class MenuActions {
   public startGame(): void {
     User.resetScore();
     Settings.sounds.stopMusic();
+    this._scene.scene.stop('Scroll');
     this._scene.scene.start('Game');
   }
 }

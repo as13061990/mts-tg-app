@@ -14,7 +14,9 @@ class Sounds implements Isounds {
   }
 
   public playMusic(sound: string): void {
-    this.stopMusic();
+    if (this._scene.sound.get(this._track) && this._track === sound) {
+      return;
+    }
     this._track = sound;
     this._music = this._scene.sound.add(this._track, {
       volume: 1,

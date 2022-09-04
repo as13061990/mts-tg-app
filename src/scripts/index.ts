@@ -5,6 +5,7 @@ import Boot from './scenes/Boot';
 import Game from './scenes/Game';
 import Menu from './scenes/Menu';
 import Pause from './scenes/Pause';
+import Scroll from './scenes/Scroll';
 import Settings from './data/Settings';
 
 const gcd = (num1: number, num2: number): number => {
@@ -44,7 +45,7 @@ window.onload = (): void => {
     root.style.height = height + 'px';
     root.style.width = width + 'px';
     const config: Phaser.Types.Core.GameConfig = {
-      type: Phaser.CANVAS,
+      type: Settings.isMobile() ? Phaser.CANVAS : Phaser.AUTO,
       width: canvasWidth,
       height: canvasHeight,
       parent: 'root',
@@ -53,7 +54,7 @@ window.onload = (): void => {
         // arcade: { debug: true }
       },
       render: { transparent: true },
-      scene: [ Boot, Game, Menu, Pause ]
+      scene: [ Boot, Game, Menu, Pause, Scroll ]
     }
     new Phaser.Game(config);
   }, 100);

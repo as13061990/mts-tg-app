@@ -4,6 +4,8 @@ import redButtonDesktop from '../../assets/images/desktop/red-button.png';
 import redButtonMobile from '../../assets/images/mobile/red-button.png';
 import greyButtonDesktop from '../../assets/images/desktop/grey-button.png';
 import greyButtonMobile from '../../assets/images/mobile/grey-button.png';
+import bigGreyButtonDesktop from '../../assets/images/desktop/big-grey-button.png';
+import bigGreyButtonMobile from '../../assets/images/mobile/big-grey-button.png';
 import blackButtonDesktop from '../../assets/images/desktop/black-button.png';
 import blackButtonMobile from '../../assets/images/mobile/black-button.png';
 import bg from '../../assets/images/bg.jpg';
@@ -57,6 +59,12 @@ import mobileSmile3 from '../../assets/images/mobile/mobile-smile-3.png';
 import mobileSmile4 from '../../assets/images/mobile/mobile-smile-4.png';
 import resume from '../../assets/images/resume.png';
 import pause from '../../assets/images/pause.png';
+import ratingBgDesktopWhite from '../../assets/images/desktop/rating-bg-white.png';
+import ratingBgDesktopBlack from '../../assets/images/desktop/rating-bg-black.png';
+import ratingBgMobileWhite from '../../assets/images/mobile/rating-bg-white.png';
+import ratingBgMobileBlack from '../../assets/images/mobile/rating-bg-black.png';
+import lineMobile from '../../assets/images/mobile/line.png';
+import lineDesktop from '../../assets/images/desktop/line.png';
 
 class Loading {
   constructor(scene: Menu) {
@@ -111,11 +119,15 @@ class Loading {
     const redButton = Settings.isMobile() ? redButtonMobile : redButtonDesktop;
     const rulesBg = Settings.isMobile() && Settings.isBlack() ? rulesBgMobileBlack : Settings.isMobile() && !Settings.isBlack() ? rulesBgMobileWhite : !Settings.isMobile() && Settings.isBlack() ? rulesBgDesktopBlack : rulesBgDesktopWhite;
     const greyButton = Settings.isMobile() ? greyButtonMobile : greyButtonDesktop;
+    const bigGreyButton = Settings.isMobile() ? bigGreyButtonMobile : bigGreyButtonDesktop;
     const blackButton = Settings.isMobile() ? blackButtonMobile : blackButtonDesktop;
     const resultLogo = Settings.isMobile() ? resultLogoMobile : resultLogoDesktop;
     const resultBg = Settings.isMobile() && Settings.isBlack() ? resultBgMobileBlack : Settings.isMobile() && !Settings.isBlack() ? resultBgMobileWhite : !Settings.isMobile() && Settings.isBlack() ? resultBgDesktopBlack : resultBgDesktopWhite;
+    const ratingBg = Settings.isMobile() && Settings.isBlack() ? ratingBgMobileBlack : Settings.isMobile() && !Settings.isBlack() ? ratingBgMobileWhite : !Settings.isMobile() && Settings.isBlack() ? ratingBgDesktopBlack : ratingBgDesktopWhite;
+    const line = Settings.isMobile() ? lineMobile : lineDesktop;
     this._scene.load.image('red-button', redButton);
     this._scene.load.image('grey-button', greyButton);
+    this._scene.load.image('big-grey-button', bigGreyButton);
     this._scene.load.image('black-button', blackButton);
     this._scene.load.image('bg', bg);
     this._scene.load.image('pixel', pixel);
@@ -157,6 +169,8 @@ class Loading {
     this._scene.load.image('obstacle-4', obstacle4);
     this._scene.load.image('resume', resume);
     this._scene.load.image('pause', pause);
+    this._scene.load.image('rating-bg', ratingBg);
+    this._scene.load.image('line', line);
 
     if (Settings.isMobile()) {
       this._scene.load.image('mobile-smile-1', mobileSmile1);

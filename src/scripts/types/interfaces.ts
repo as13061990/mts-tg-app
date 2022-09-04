@@ -12,3 +12,9 @@ interface Isounds {
   stopMusic: () => void;
   play: (sound: string) => void;
 }
+interface Irating {
+  id: number;
+  place: number;
+  name: string;
+  score: number;
+}

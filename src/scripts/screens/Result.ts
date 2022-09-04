@@ -9,13 +9,13 @@ import axios from 'axios';
 class Result implements Iscreen {
   constructor(scene: Menu) {
     this._scene = scene;
-    this.init();
+    this._init();
   }
 
   private _scene: Menu;
   public readonly type: screen = screen.RESULT;
 
-  private init(): void {
+  private _init(): void {
     if (Settings.isMobile()) {
       this._buildMobileInfo();
       this._buildMobileButtons();
@@ -112,7 +112,8 @@ class Result implements Iscreen {
       color: '#FFFFFF'
     }).setOrigin(0.5, 0.5);
     rating.callback = (): void => {
-      console.log('rating');
+      Settings.setScreen(screen.RATING);
+      this._scene.scene.restart();
     }
 
     const again = new Button(this._scene, centerX + 160, start.y - 120, 'grey-button');
@@ -138,7 +139,8 @@ class Result implements Iscreen {
       color: '#FFFFFF'
     }).setOrigin(0.5, 0.5);
     rating.callback = (): void => {
-      console.log('rating');
+      Settings.setScreen(screen.RATING);
+      this._scene.scene.restart();
     }
 
     const again = new Button(this._scene, centerX + 160, start.y - 100, 'grey-button');
