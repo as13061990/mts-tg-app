@@ -104,7 +104,7 @@ class Rating implements Iscreen {
         color: '#FF0000'
       });
 
-      const color = String(user.id) === User.getID() ? '#FF0000' : textColor; 
+      const color = String(user.id) === String(User.getID()) ? '#FF0000' : textColor; 
       this._scene.add.text(place.getBounds().right + 5, place.y, user.name, {
         font: '24px MTS-UltraWide',
         color: color
