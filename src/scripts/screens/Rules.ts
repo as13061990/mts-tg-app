@@ -84,12 +84,12 @@ class Rules implements Iscreen {
     }).setLineSpacing(2);
     const textColor = Settings.isBlack() ? '#FFFFFF' : '#000000';
 
-    const textDescr1 = 'Для этого прыгай через преграды и собирай\nсуперкешбэк 5% на самые популярные категории\nпо карте';
+    const textDescr1 = 'Для этого прыгай через преграды и собирай\nсуперкешбэк 5% на самые популярные категории\n';
     const descr1 = this._scene.add.text(bounds.left + 40, bounds.top + 130, textDescr1, {
       font: '20px MTS-Regular',
       color: textColor
     }).setLineSpacing(2);
-    this._scene.add.text(bounds.left + 127, descr1.getBounds().bottom, Settings.lang.rulesDescr2, {
+    this._scene.add.text(bounds.left + 40, descr1.getBounds().bottom + 2, 'по карте ' + Settings.lang.rulesDescr2, {
       font: '20px MTS-Bold',
       color: textColor
     }).setOrigin(0, 1);

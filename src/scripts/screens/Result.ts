@@ -51,12 +51,12 @@ class Result implements Iscreen {
     }).setLineSpacing(1);
 
     const descr = this._scene.add.text(bounds.left + 40, header.getBounds().bottom + 30, Settings.lang['resultDescrMobileBold' + index], {
-      font: '33px MTS-Medium',
+      font: '28px MTS-Medium',
       color: textColor
     }).setLineSpacing(5);
 
     this._scene.add.text(bounds.left + 40, descr.getBounds().bottom + 40, Settings.lang['resultDescrMobile' + index], {
-      font: '26px MTS-Regular',
+      font: '28px MTS-Medium',
       color: textColor,
       wordWrap: { width: 550 }
     }).setLineSpacing(5);
@@ -91,7 +91,7 @@ class Result implements Iscreen {
     }).setLineSpacing(5);
 
     this._scene.add.text(bounds.left + 40, descr.getBounds().bottom + 20, Settings.lang['resultDescr' + index], {
-      font: '25px MTS-Regular',
+      font: '25px MTS-Medium',
       color: textColor,
       wordWrap: { width: 550 }
     }).setLineSpacing(5);

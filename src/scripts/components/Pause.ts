@@ -3,7 +3,7 @@ import Button from './Button';
 
 class Pause extends Button {
   constructor(scene: Phaser.Scene) {
-    super(scene, scene.cameras.main.width - 70, Settings.isMobile() ? 85 : 50, 'pause');
+    super(scene, scene.cameras.main.width - 70, Settings.isMobile() ? 72 : 38.5, 'pause');
     this.setOrigin(1, 0);
     this.setDepth(5);
     this.setSimpleClick();

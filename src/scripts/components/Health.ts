@@ -11,7 +11,7 @@ class Health {
   private _sprites: Phaser.GameObjects.Sprite[] = [];
 
   private _build(): void {
-    const y = Settings.isMobile() ? 85 : 50;
+    const y = Settings.isMobile() ? 83.5 : 50;
 
     for (let i = 0; i < 3; i++) {
       const x = 70 + i * 55;
