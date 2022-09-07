@@ -57,7 +57,7 @@ class GameActions {
   private _interval(): void {
     this._scene.time.addEvent({ delay: 1000, callback: (): void => {
       if (!this._scene.gameOver && !this._scene.mts) {
-        User.plusScore(1);
+        User.plusScore(3);
         this._scene.points.updatePoints();
       }
       User.plusTimer();

@@ -10,7 +10,7 @@ class Bonus extends Phaser.Physics.Arcade.Sprite {
   public scene: Game;
   private _tween: Phaser.Tweens.Tween;
   private _tween2: Phaser.Tweens.Tween;
-  private _tween3: Phaser.Tweens.Tween;
+  // private _tween3: Phaser.Tweens.Tween;
   private _flash: Phaser.GameObjects.Sprite;
 
   private _build(): void {
@@ -20,6 +20,10 @@ class Bonus extends Phaser.Physics.Arcade.Sprite {
     this.setDepth(3);
     const { centerX, centerY } = this.getBounds();
     this._flash = this.scene.add.sprite(centerX, centerY, 'flash');
+
+    if (this._flash.texture.key === 'bonus-3') {
+      this._flash.setScale(1.3);
+    }
 
     this._tween = this.scene.tweens.add({
       targets: [this, this._flash],
@@ -32,15 +36,15 @@ class Bonus extends Phaser.Physics.Arcade.Sprite {
       yoyo: true,
       repeat: -1
     });
-    this._tween3 = this.scene.tweens.add({
-      targets: this._flash,
-      alpha: { from: 1, to: 0.8 },
-      yoyo: true,
-      repeat: -1
-    });
+    // this._tween3 = this.scene.tweens.add({
+    //   targets: this._flash,
+    //   alpha: { from: 1, to: 0.8 },
+    //   yoyo: true,
+    //   repeat: -1
+    // });
     this.scene.tween.push(this._tween);
     this.scene.tween.push(this._tween2);
-    this.scene.tween.push(this._tween3);
+    // this.scene.tween.push(this._tween3);
   }
 
   public destroy(): void {
@@ -52,6 +56,7 @@ class Bonus extends Phaser.Physics.Arcade.Sprite {
     if (this.x + this.width < 0) {
       this._tween.stop();
       this._tween2.stop();
+      // this._tween3.stop();
       this.destroy();
     }
   }
