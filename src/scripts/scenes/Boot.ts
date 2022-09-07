@@ -81,7 +81,7 @@ class Boot extends Phaser.Scene {
       console.log('build', this._build);
       this._user = false;
       this._fonts = false;
-      this.scene.launch('Menu');
+      this.scene.start('Menu');
     }
   }
 
