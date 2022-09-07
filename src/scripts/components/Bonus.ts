@@ -21,10 +21,6 @@ class Bonus extends Phaser.Physics.Arcade.Sprite {
     const { centerX, centerY } = this.getBounds();
     this._flash = this.scene.add.sprite(centerX, centerY, 'flash');
 
-    if (this._flash.texture.key === 'bonus-3') {
-      this._flash.setScale(1.3);
-    }
-
     this._tween = this.scene.tweens.add({
       targets: [this, this._flash],
       x: '-=' + this.scene.bg.width,
