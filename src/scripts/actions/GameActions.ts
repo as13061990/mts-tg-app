@@ -80,7 +80,9 @@ class GameActions {
     const { width, height } = this._scene.cameras.main;
     const x = width + Phaser.Math.Between(0, 500);
     const y = height - 320;
-    new NPC(this._scene, x, y, 'npc-' + Phaser.Math.Between(1, 7));
+    const random = Phaser.Math.Between(1, 6);
+    const type = random === 6 ? Phaser.Math.Between(6, 7) : random;
+    new NPC(this._scene, x, y, 'npc-' + type);
   }
 
   private _damage(): void {
@@ -139,8 +141,9 @@ class GameActions {
     this._damage();
   }
 
-  private _createObjects(bonus?: boolean): void {
-    this._scene.time.addEvent({ delay: Phaser.Math.Between(3000, 6000), callback: (): void => {
+  private _createObjects(): void {
+    const bonus = Phaser.Math.Between(1, 3) === 1 ? false : true;
+    this._scene.time.addEvent({ delay: Phaser.Math.Between(3000, 4500), callback: (): void => {
       if (bonus) {
         this._createBonus();
       } else {
@@ -154,7 +157,8 @@ class GameActions {
       const bonus = new Premium(this._scene);
       this._scene.bonuses.add(bonus);
     } else {
-      const y = Phaser.Math.Between(this._scene.cameras.main.height - 600, this._scene.cameras.main.height - 400);
+      const { height } = this._scene.cameras.main;
+      const y = Phaser.Math.Between(1, 3) === 1 ? height - 220 : Phaser.Math.Between(height - 600, height - 400);
       const bonus = new Bonus(this._scene, y);
       this._scene.bonuses.add(bonus);
     }
@@ -164,7 +168,7 @@ class GameActions {
   private _createObstacle(): void {
     const obstacle = new Obstacle(this._scene);
     this._scene.obstacles.add(obstacle);
-    this._createObjects(true);
+    this._createObjects();
   }
 }
 

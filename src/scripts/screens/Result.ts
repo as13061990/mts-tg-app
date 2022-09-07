@@ -39,26 +39,25 @@ class Result implements Iscreen {
     const bounds = bg.getBounds();
 
     this._scene.add.sprite(bounds.right - 40, bounds.top + 50, 'result-logo').setOrigin(1, 0);
-    const smile = this._scene.add.sprite(bounds.left + 40, bounds.top + 45, 'mobile-smile-' + index).setOrigin(0, 0);
+    const smile = this._scene.add.sprite(bounds.left + 35, bounds.top + 45, 'mobile-smile-' + index).setOrigin(0, 0);
     this._scene.add.text(centerX + 140, smile.getBounds().bottom, String(score), {
       font: '80px MTS-UltraWide',
       color: '#FF0000'
     }).setOrigin(0.5, 1);
 
-    const header = this._scene.add.text(bounds.left + 40, smile.getBounds().bottom + 36, Settings.lang['resultHeaderMobile' + index].toUpperCase(), {
+    const header = this._scene.add.text(bounds.left + 35, smile.getBounds().bottom + 36, Settings.lang['resultHeaderMobile' + index].toUpperCase(), {
       font: '60px MTS-UltraWide',
       color: textColor
     }).setLineSpacing(1);
 
-    const descr = this._scene.add.text(bounds.left + 40, header.getBounds().bottom + 30, Settings.lang['resultDescrMobileBold' + index], {
-      font: '28px MTS-Medium',
+    const descr = this._scene.add.text(bounds.left + 35, header.getBounds().bottom + 30, Settings.lang['resultDescrMobileBold' + index], {
+      font: '27px MTS-Medium',
       color: textColor
     }).setLineSpacing(5);
 
-    this._scene.add.text(bounds.left + 40, descr.getBounds().bottom + 40, Settings.lang['resultDescrMobile' + index], {
-      font: '28px MTS-Medium',
-      color: textColor,
-      wordWrap: { width: 550 }
+    this._scene.add.text(bounds.left + 35, descr.getBounds().bottom + 40, Settings.lang['resultDescrMobile' + index], {
+      font: '27px MTS-Medium',
+      color: textColor
     }).setLineSpacing(5);
   }
 
@@ -86,14 +85,13 @@ class Result implements Iscreen {
     }).setLineSpacing(1);
     
     const descr = this._scene.add.text(bounds.left + 40, header.getBounds().bottom + 15, Settings.lang['resultDescrBold' + index], {
-      font: '25px MTS-Medium',
+      font: '23px MTS-Medium',
       color: textColor
     }).setLineSpacing(5);
 
     this._scene.add.text(bounds.left + 40, descr.getBounds().bottom + 20, Settings.lang['resultDescr' + index], {
-      font: '25px MTS-Medium',
-      color: textColor,
-      wordWrap: { width: 550 }
+      font: '23px MTS-Medium',
+      color: textColor
     }).setLineSpacing(5);
   }
 
