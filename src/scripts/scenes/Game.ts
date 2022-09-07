@@ -43,24 +43,12 @@ class Game extends Phaser.Scene {
     this._test();
   }
 
-  private _fps: Phaser.GameObjects.Text;
   private _test(): void {
-    const { width, height } = this.cameras.main;
-    this._fps = this.add.text(width - 40, height - 40, '', {
-      font: '40px MTS-UltraWide',
-      color: '#FF0000'
-    }).setOrigin(1, 0.5);
-
     const cursors = this.input.keyboard.createCursorKeys();
     cursors.space.on('down', (): void => {
       // @ts-ignore
       // this.actions._damage();
     });
-  }
-
-  public update(time: number, delta: number): void {
-    const fps = 'FPS: ' + (1000 / delta).toFixed(0);
-    this._fps.setText(fps);
   }
 }
 

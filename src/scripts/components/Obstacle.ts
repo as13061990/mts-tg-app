@@ -32,9 +32,9 @@ class Obstacle extends Phaser.Physics.Arcade.Sprite {
     super.destroy();
   }
 
-  protected preUpdate(): void {
+  protected preUpdate(time: number, delta: number): void {
     if (!this.scene.gameOver) {
-      this.setX(this.x - Settings.getSpeed());
+      this.setX(this.x - Settings.getSpeed(delta));
     }
 
     if (this.x + this.width < 0) {

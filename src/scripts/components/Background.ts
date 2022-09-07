@@ -17,9 +17,9 @@ class Background extends Phaser.GameObjects.TileSprite {
     this.setDepth(-2);
   }
 
-  protected preUpdate(): void {
+  protected preUpdate(time: number, delta: number): void {
     if (!this.scene.gameOver) {
-      this.setTilePosition(this.tilePositionX + Settings.getSpeed(), this.tilePositionY);
+      this.setTilePosition(this.tilePositionX + Settings.getSpeed(delta), this.tilePositionY);
     }
   }
 }
