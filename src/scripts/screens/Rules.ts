@@ -68,7 +68,7 @@ class Rules implements Iscreen {
     }).setLineSpacing(2);
     
     const textDescr4 = 'Собирай бонусы и избегай препятствий\nс помощью прыжка, для этого нажимай\nна любую часть экрана, чем дольше\nнажатие – тем выше прыжок.\n\nУ тебя будет 3 жизни – они будут сгорать\nпри столкновении с препятствиями.\nКак только сгорит последняя –\nигра закончится.';
-    this._scene.add.text(bounds.left + 35, descr3.getBounds().bottom + 33, textDescr4, {
+    this._scene.add.text(bounds.left + 35, descr3.getBounds().bottom + 28, textDescr4, {
       font: '27px MTS-Regular',
       color: textColor
     }).setLineSpacing(2);
