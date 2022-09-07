@@ -13,7 +13,7 @@ class Settings {
   private _screen: screen = screen.RULES;
   private _mobile: boolean = false;
   private _black: boolean = false;
-  private readonly _speed: number = 10;
+  private readonly _speed: number = 13;
   public sounds: Isounds;
 
   public setScreen(screen: screen): screen {
@@ -27,7 +27,7 @@ class Settings {
 
   public getSpeed(): number {
     const points = Math.floor(User.getScore() / 100);
-    return this._speed + points;
+    return this._speed + points * 2;
   }
 
   public isMobile(): boolean {
