@@ -8,7 +8,6 @@ class Obstacle extends Phaser.Physics.Arcade.Sprite {
   }
 
   public scene: Game;
-  private _tween: Phaser.Tweens.Tween;
 
   private _build(): void {
     this.scene.add.existing(this);
@@ -27,13 +26,6 @@ class Obstacle extends Phaser.Physics.Arcade.Sprite {
       this.body.setSize(150, 150);
       this.body.setCircle(this.displayWidth / 5);
     }
-
-    this._tween = this.scene.tweens.add({
-      targets: this,
-      x: '-=' + this.scene.bg.width,
-      duration: Settings.speed
-    });
-    this.scene.tween.push(this._tween);
   }
 
   public destroy(): void {
@@ -41,8 +33,11 @@ class Obstacle extends Phaser.Physics.Arcade.Sprite {
   }
 
   protected preUpdate(): void {
+    if (!this.scene.gameOver) {
+      this.setX(this.x - Settings.getSpeed());
+    }
+
     if (this.x + this.width < 0) {
-      this._tween.stop();
       this.destroy();
     }
   }

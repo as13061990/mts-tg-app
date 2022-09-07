@@ -22,7 +22,7 @@ class GameActions {
     this._createClickZone();
     this._setWorldBounds();
     this._interval();
-    this._setRunning();
+    this._showNpc();
     this._startMusic();
     this._setCollisions(); 
     this._scene.time.addEvent({ delay: 1300, callback: (): void => {
@@ -56,24 +56,21 @@ class GameActions {
 
   private _interval(): void {
     this._scene.time.addEvent({ delay: 1000, callback: (): void => {
+      User.plusTimer();
+    }, loop: true });
+
+    this._scene.time.addEvent({ delay: 333.3, callback: (): void => {
       if (!this._scene.gameOver && !this._scene.mts) {
-        User.plusScore(3);
+        User.plusScore(1);
         this._scene.points.updatePoints();
       }
-      User.plusTimer();
     }, loop: true });
   }
 
-  private _setRunning(): void {
-    const tween = this._scene.tweens.add({
-      targets: this._scene.bg,
-      tilePositionX: { from: 0, to: this._scene.bg.width },
-      duration: Settings.speed,
-      repeat: -1,
-      onStart: (): void => this._setNpc(),
-      onRepeat: (): void => this._setNpc()
-    });
-    this._scene.tween.push(tween);
+  private _showNpc(): void {
+    this._scene.time.addEvent({ delay: Phaser.Math.Between(2000, 3000), callback: (): void => {
+      this._setNpc();
+    }, loop: false });
   }
 
   private _setNpc(): void {
@@ -83,6 +80,7 @@ class GameActions {
     const random = Phaser.Math.Between(1, 6);
     const type = random === 6 ? Phaser.Math.Between(6, 7) : random;
     new NPC(this._scene, x, y, 'npc-' + type);
+    this._showNpc();
   }
 
   private _damage(): void {
@@ -143,7 +141,8 @@ class GameActions {
 
   private _createObjects(): void {
     const bonus = Phaser.Math.Between(1, 3) === 1 ? false : true;
-    this._scene.time.addEvent({ delay: Phaser.Math.Between(3000, 4500), callback: (): void => {
+    
+    this._scene.time.addEvent({ delay: Phaser.Math.Between(2500, 4000), callback: (): void => {
       if (bonus) {
         this._createBonus();
       } else {

@@ -8,22 +8,18 @@ class NPC extends Phaser.GameObjects.Sprite {
   }
 
   public scene: Game;
-  private _tween: Phaser.Tweens.Tween;
 
   private _build(): void {
     this.scene.add.existing(this);
     this.setOrigin(0, 1);
-    this._tween = this.scene.tweens.add({
-      targets: this,
-      x: '-=' + this.scene.bg.width,
-      duration: Settings.speed
-    });
-    this.scene.tween.push(this._tween);
   }
 
   protected preUpdate(): void {
+    if (!this.scene.gameOver) {
+      this.setX(this.x - Settings.getSpeed());
+    }
+
     if (this.x + this.width < 0) {
-      this._tween.stop();
       this.destroy();
     }
   }

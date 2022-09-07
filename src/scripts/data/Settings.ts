@@ -1,5 +1,6 @@
 import langs from '../data/langs';
 import { screen } from '../types/enums';
+import User from './User';
 
 class Settings {
 
@@ -12,7 +13,7 @@ class Settings {
   private _screen: screen = screen.RULES;
   private _mobile: boolean = false;
   private _black: boolean = false;
-  public readonly speed: number = 4000;
+  private readonly _speed: number = 10;
   public sounds: Isounds;
 
   public setScreen(screen: screen): screen {
@@ -25,7 +26,8 @@ class Settings {
   }
 
   public getSpeed(): number {
-    return this.speed;
+    const points = Math.floor(User.getScore() / 100);
+    return this._speed + points;
   }
 
   public isMobile(): boolean {
