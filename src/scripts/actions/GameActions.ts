@@ -74,6 +74,7 @@ class GameActions {
   }
 
   private _setNpc(): void {
+    if (this._scene?.gameOver) return;
     const { width, height } = this._scene.cameras.main;
     const x = width + Phaser.Math.Between(0, 500);
     const y = height - 320;
@@ -84,6 +85,7 @@ class GameActions {
   }
 
   private _damage(): void {
+    if (this._scene?.gameOver) return;
     if (this._scene.player.getRecovery() === true) return;
     const health = User.minusHealht();
     this._scene.health.updateHealth();
@@ -140,6 +142,7 @@ class GameActions {
   }
 
   private _createObjects(): void {
+    if (this._scene?.gameOver) return;
     const bonus = Phaser.Math.Between(1, 3) === 1 ? false : true;
     
     this._scene.time.addEvent({ delay: Phaser.Math.Between(2500, 4000), callback: (): void => {
@@ -152,6 +155,7 @@ class GameActions {
   }
 
   private _createBonus(): void {
+    if (this._scene?.gameOver) return;
     if (this._scene.mts) {
       const bonus = new Premium(this._scene);
       this._scene.bonuses.add(bonus);
@@ -165,6 +169,7 @@ class GameActions {
   }
 
   private _createObstacle(): void {
+    if (this._scene?.gameOver) return;
     const obstacle = new Obstacle(this._scene);
     this._scene.obstacles.add(obstacle);
     this._createObjects();

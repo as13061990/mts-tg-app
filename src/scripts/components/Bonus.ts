@@ -34,14 +34,14 @@ class Bonus extends Phaser.Physics.Arcade.Sprite {
   }
 
   protected preUpdate(time: number, delta: number): void {
-    if (!this.scene.gameOver) {
-      this.setX(this.x - Settings.getSpeed(delta));
-      this._flash.setX(this._flash.x - Settings.getSpeed(delta));
+    if (!this.scene?.gameOver) {
+      this?.setX(this.x - Settings.getSpeed(delta));
+      this?._flash?.setX(this._flash.x - Settings.getSpeed(delta));
     }
 
     if (this.x + this.width < 0) {
-      this._tween.stop();
-      this.destroy();
+      this?._tween?.stop();
+      this?.destroy();
     }
   }
 }
