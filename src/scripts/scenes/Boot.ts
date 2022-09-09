@@ -95,14 +95,20 @@ class Boot extends Phaser.Scene {
     try { User.setID(telegram.initDataUnsafe.user.id); }
     catch (e) { User.setID('0'); }
     
-    try { User.setName(telegram.initDataUnsafe.user.first_name); }
-    catch (e) { User.setName('Неизвестный игрок'); }
-    
     try { User.setUsername(telegram.initDataUnsafe.user.username); }
     catch (e) { User.setUsername('no_username'); }
 
+    try { User.setFirstName(telegram.initDataUnsafe.user.first_name); }
+    catch (e) { User.setFirstName('Неизвестный игрок'); }
+    
+    try { User.setLastName(telegram.initDataUnsafe.user.last_name); }
+    catch (e) { User.setLastName(''); }
+
     axios.post(process.env.API + '/getData', {
       id: User.getID(),
+      username: User.getUsername(),
+      first_name: User.getFirstName(),
+      last_name: User.getLastName()
     }).then(res => {
       if (!res.data.error) {
         const record: number = res.data.data.record;

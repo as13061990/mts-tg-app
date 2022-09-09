@@ -2,6 +2,7 @@ class User {
 
   private _id: string = '0';
   private _name: string = 'Неизвестный игрок';
+  private _lastname: string = '';
   private _username: string = 'no_username';
   private _score: number = 0;
   private _record: number = 0;
@@ -17,14 +18,31 @@ class User {
     return this._id;
   }
 
-  public setName(name: string): string {
+  public setFirstName(name: string): string {
     this._name = name;
     return this._name;
   }
 
+  public getFirstName(): string {
+    return this._name;
+  }
+  
   public setUsername(username: string): string {
     this._username = username;
     return this._username;
+  }
+
+  public getUsername(): string {
+    return this._username;
+  }
+
+  public setLastName(lastname: string): string {
+    this._lastname = lastname;
+    return this._lastname;
+  }
+
+  public getLastName(): string {
+    return this._lastname;
   }
 
   public getScore(): number {
