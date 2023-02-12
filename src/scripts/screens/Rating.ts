@@ -3,7 +3,6 @@ import Settings from '../data/Settings';
 import User from '../data/User';
 import Menu from '../scenes/Menu';
 import { screen } from '../types/enums';
-import axios from 'axios';
 
 class Rating implements Iscreen {
   constructor(scene: Menu) {
@@ -79,17 +78,32 @@ class Rating implements Iscreen {
   }
 
   private _getRating(): void {
-    axios.post(process.env.API + '/getRating', {
-      id: User.getID()
-    }).then(res => {
-      this._rating = res.data.data;
-      
-      if (Settings.isMobile()) {
-        this._ratingMobile();
-      } else {
-        this._ratingDesktop();
+    this._rating = [
+      {
+        id: 1,
+        place: 1,
+        score: 100,
+        name: 'First user example'
+      },
+      {
+        id: 2,
+        place: 2,
+        score: 99,
+        name: 'Second user example',
+      },
+      {
+        id: 3,
+        place: 3,
+        score: 98,
+        name: 'You',
       }
-    });
+    ];
+      
+    if (Settings.isMobile()) {
+      this._ratingMobile();
+    } else {
+      this._ratingDesktop();
+    }
   }
 
   private _ratingMobile(): void {

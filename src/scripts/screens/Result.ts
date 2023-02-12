@@ -4,7 +4,6 @@ import User from '../data/User';
 import Utils from '../data/Utils';
 import Menu from '../scenes/Menu';
 import { screen } from '../types/enums';
-import axios from 'axios';
 
 class Result implements Iscreen {
   constructor(scene: Menu) {
@@ -23,7 +22,6 @@ class Result implements Iscreen {
       this._buildDesktopInfo();
       this._buildDesktopButtons();
     }
-    this._sendResult();
   }
 
   private _buildMobileInfo(): void {
@@ -150,7 +148,6 @@ class Result implements Iscreen {
   }
 
   private _openLink(): void {
-    axios.post(process.env.API + '/sendCard', {});
     const link = 'https://www.mtsbank.ru/factory/l/credit-lukoil/?utm_source=mrk_game&utm_medium=tg_sp&utm_campaign=is0_mts_premium_nozh_q3_nontv_2022&utm_term=button';
     const a = document.createElement('a');
     a.setAttribute('target', '_blank');
@@ -158,14 +155,6 @@ class Result implements Iscreen {
     a.href = link;
     a.click();
     document.body.removeChild(a);
-  }
-
-  private _sendResult(): void {
-    axios.post(process.env.API + '/sendResult', {
-      id: User.getID(),
-      score: User.getScore(),
-      timer: User.getTimer()
-    });
   }
 }
 
